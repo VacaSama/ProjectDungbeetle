@@ -2,7 +2,7 @@
 
 ## Overview :
 
-Project Dungbeetle helps programmers work through frustrating bugs
+*Project Dungbeetle* helps programmers work through frustrating bugs
 by giving them a place to explain what they’re trying to do, 
 what’s going wrong, and why — no account or login required. By encouraging 
 users to “talk it out” step-by-step, the app supports better debugging 
@@ -44,7 +44,42 @@ user-friendly platform where programmers can articulate their debugging process 
 
 ## Tech Stack :  
  - Frontend: 
+	- .NET MAUI – Cross-platform app framework, using C#
+	- XAML – UI layout and styling
+	- MVVM Architecture – Separation of UI, logic, and data
+	
  - Backend: 
+	- C# 
+	- CRUD Functionality – Create, Read, Update, Delete debugging logs
+	- MVVM ViewModels 
+	
  - Database: 
+	- SQLite
+	- Entity Framework Core 
+	
+## Tech Stacks cont. Development Tools :
+
+Visual Studio 2026+
+
+.NET 10 SDK, .NET 9 SDK may also work.
 
 ## Install and Setup: 
+### Prerequisites
+
+Before running the project, make sure you have:
+
+- Visual Studio 2026 or newer
+
+- The .NET MAUI workload installed
+
+- .NET 10 SDK 
+
+In Visual Studio Installer, ensure these workloads are checked:
+
+- .NET Multi-platform App UI development
+
+### Installation
+1. Clone the repository
+2. Open the solution file `ProjectDungbeetle.sln` in Visual Studio
+3. Select the target platform. (Windows is recommended for initial testing)
+4. Build the solution (f5)
