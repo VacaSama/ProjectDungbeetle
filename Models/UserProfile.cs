@@ -20,6 +20,7 @@ public class UserProfile
 
     /// <summary>
     /// Asks the user what coding languages they are currently learning. 
+    /// Connected to CodingLanguage in Entry model.
     /// </summary>
     public string LearningLanguages { get; set; }
 
