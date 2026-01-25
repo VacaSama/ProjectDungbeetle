@@ -10,18 +10,35 @@ Roles/Actors — users or external participants
 Attributes — properties or data values
 System/Technical — UI, database, or infrastructure terms
 
+* Legend:
+(N) = Noun
+
 ## Entities 
-- Hints 
-- Notes
-- Tasks
-- 
+Entry (N)
+- Verbs: create, read, log, delete
+
+UserProfile (N)
+- Verbs: store, view, update
+
+Hint (N)
+- Verbs: read, generate
+
+Questionnaire (N)
+- Verbs: ask, read
+
+QuestionnaireResponse (N)
+- Verbs: update, submit
 
 ## Roles/Actors
 - User 
-	- Verbs: 
+	- Verbs: submit, view, log, delete, create
+
 ## Attributes
+- ids
+- 
+
 
 ## System/Techinal
 - Database
-	- Nouns: database, log, 
-	- Verbs: create, read, update, delete
+- Buttons
+- Forms/Questionnaire
