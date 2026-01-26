@@ -1,4 +1,5 @@
-﻿namespace ProjectDungbeetle.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace ProjectDungbeetle.Models;
 
 /// <summary>
 /// Provides the user with hints and tips that cam help them improve how they are thinking

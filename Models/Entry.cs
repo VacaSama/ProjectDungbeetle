@@ -1,4 +1,5 @@
-﻿namespace ProjectDungbeetle.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace ProjectDungbeetle.Models;
 /// <summary>
 /// The Entry class that represents a User created entry. 
 /// Entries are notes or errors that the user wants to keep track of, 
@@ -10,6 +11,7 @@ public class Entry
     /// <summary>
     /// Sets the unique identifier for the user made entry
     /// </summary>
+    [Key]
     public int Id { get; set; }
 
     /// <summary>

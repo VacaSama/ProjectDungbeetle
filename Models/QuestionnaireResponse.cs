@@ -1,4 +1,5 @@
-﻿namespace ProjectDungbeetle.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace ProjectDungbeetle.Models;
 
 
 /// <summary>

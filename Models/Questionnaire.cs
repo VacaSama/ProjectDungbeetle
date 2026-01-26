@@ -1,4 +1,5 @@
-﻿namespace ProjectDungbeetle.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace ProjectDungbeetle.Models;
 
 /// <summary>
 /// Represents a collection of questions for the user to answer when they first
@@ -9,4 +10,5 @@
 /// </summary>
 public class Questionnaire
 {
+
 }
