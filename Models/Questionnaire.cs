@@ -10,5 +10,8 @@ namespace ProjectDungbeetle.Models;
 /// </summary>
 public class Questionnaire
 {
-
+    /// <summary>
+    /// Sets the unique identifier for the questionnaire
+    /// </summary>
+    public int Id { get; set; }
 }

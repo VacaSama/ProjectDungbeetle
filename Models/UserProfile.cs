@@ -8,7 +8,7 @@
 public class UserProfile
 {
     /// <summary>
-    /// Sets the unique identifier for the user made entry
+    /// Sets the unique identifier for the user Id
     /// </summary>
     public int Id { get; set; }
 

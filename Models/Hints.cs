@@ -7,4 +7,8 @@ namespace ProjectDungbeetle.Models;
 /// </summary>
 public class Hints
 {
+    /// <summary>
+    /// Sets the unique identifier for the hints
+    /// </summary>
+    public int Id { get; set; }
 }

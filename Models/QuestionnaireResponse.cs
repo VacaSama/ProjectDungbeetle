@@ -8,5 +8,9 @@ namespace ProjectDungbeetle.Models;
 /// </summary>
 public class QuestionnaireResponse
 {
-
+    /// <summary>
+    /// Sets the unique identifier for the user response to 
+    /// the questionnaire.
+    /// </summary>
+    public int Id { get; set; }
 }
