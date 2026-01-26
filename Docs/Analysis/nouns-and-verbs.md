@@ -24,9 +24,11 @@ QuestionnaireResponse (N)
 	- Verbs: submit, view, log, delete, create
 
 ## Attributes
-- ids
-- 
-
+- Id
+- [key]
+- Notes
+- Type
+- Text
 
 ## System/Techinal
 - Database
