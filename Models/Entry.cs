@@ -41,4 +41,4 @@ public class Entry
     /// </summary>
     public string Notes { get; set; }
 
-    }
+}
