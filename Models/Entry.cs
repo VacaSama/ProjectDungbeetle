@@ -39,12 +39,12 @@ public class Entry
     /// useful for debugging and/ or reflective learning. Or the user can use this 
     /// to save useful loops, functions, etc.
     /// </summary>
-    public required string CodeSnippet { get; set; }
+    public string? CodeSnippet { get; set; }
 
     /// <summary>
     /// Allows the user to save notes about the error, code snippet, or general concepts .
     /// Notes are not required, but highly encouraged.
     /// </summary>
-    public string? Notes { get; set; }
+    public required string Notes { get; set; }
 
 }

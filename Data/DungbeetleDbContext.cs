@@ -7,7 +7,7 @@ public class DungbeetleDbContext : DbContext
 {
     public DungbeetleDbContext(DbContextOptions<DungbeetleDbContext> options) : base(options)
     {
-        // nothing goes here :) 
+        // nothing to see here :) 
     }
 
     // declare DBSets/Models/ aka tables here 
@@ -39,4 +39,9 @@ public class DungbeetleDbContext : DbContext
     /// </summary>
     public DbSet<UserProfile> UserProfiles { get; set; }
 
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+    }
 }
