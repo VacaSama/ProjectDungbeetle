@@ -29,5 +29,5 @@ public class QuestionnaireResponse
     /// <summary>
     /// Stores the user's answer(s) to the questionnaire question.
     /// </summary>
-    public string UserResponse { get; set; }
+    public required string UserResponse { get; set; }
 }
