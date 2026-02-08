@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace ProjectDungbeetle.Models;
+
 /// <summary>
 /// The Entry class that represents a User created entry. 
 /// Entries are notes or errors that the user wants to keep track of, 
@@ -43,7 +44,7 @@ public class Entry
 
     /// <summary>
     /// Allows the user to save notes about the error, code snippet, or general concepts .
-    /// Notes are not required, but highly encouraged.
+    /// Notes are required, but highly encouraged.
     /// </summary>
     public required string Notes { get; set; }
 

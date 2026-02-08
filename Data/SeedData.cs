@@ -51,8 +51,8 @@ public class SeedData
 
         );
 
-        // *** SAMPLE QUESTIONS FOR QUESTIONNAIRE ***
-        context.Questionnaires.AddRange(
+        // *** SAMPLE QUESTIONS FOR QUESTIONNAIRE **** 
+        context.Questionnaires.AddRange( 
             new Models.Questionnaire
             {
                 QuestionText = "Which coding language(s) are you learning? Check all that apply.",
