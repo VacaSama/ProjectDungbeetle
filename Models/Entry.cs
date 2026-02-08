@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace ProjectDungbeetle.Models;
+
 /// <summary>
 /// The Entry class that represents a User created entry. 
 /// Entries are notes or errors that the user wants to keep track of, 
@@ -15,30 +16,36 @@ public class Entry
     public int Id { get; set; }
 
     /// <summary>
-    /// Sets the title of the user made entry
+    ///  This is the title of the entry made by the user. 
+    ///  The max length of characters will be set to 75 characters to avoid 
+    ///  super long titles that are hard to read.
     /// </summary>
-    public string Title { get; set; }
+    [StringLength(75)]
+    public required string Title { get; set; }
 
     /// <summary>
-    /// Sets the description of the error that the use has encountered, 
+    /// Sets the description of the error that the user has encountered, 
     /// this can also be null if the entry is just a code snippet with notes. Or just notes.
     /// </summary>
-    public string ErrorDescription { get; set; }
+    public string? ErrorDescription { get; set; }
 
     /// <summary>
     /// Gets or sets the programming language associated with the code or content.
+    /// At least one coding language must be selected for the entry.
     /// </summary>
-    public string CodingLanguage { get; set; }
+    public required string CodingLanguage { get; set; }
 
     /// <summary>
     /// Allows the user to save a code snippet that was causing an error, 
-    /// useful for debugging and/ or reflective learning.
+    /// useful for debugging and/ or reflective learning. Or the user can use this 
+    /// to save useful loops, functions, etc.
     /// </summary>
-    public string CodeSnippet { get; set; }
+    public string? CodeSnippet { get; set; }
 
     /// <summary>
-    /// Allows the user to save notes about the error, code snippet, or general concepts 
+    /// Allows the user to save notes about the error, code snippet, or general concepts .
+    /// Notes are required, but highly encouraged.
     /// </summary>
-    public string Notes { get; set; }
+    public required string Notes { get; set; }
 
-    }
+}

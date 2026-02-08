@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using ProjectDungbeetle.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add the Db context to the program 
+builder.Services.AddDbContext<DungbeetleDbContext>(options =>
+    options.UseSqlServer(
+        "Server=(localdb)\\MSSQLLocalDB;Database=DungbeetleDb;Trusted_Connection=True;"
+    )
+);
 
 var app = builder.Build();
 
