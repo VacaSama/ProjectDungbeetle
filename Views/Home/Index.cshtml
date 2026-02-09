@@ -1,8 +1,23 @@
-﻿@{
+﻿@model ProjectDungbeetle.ViewModels.DashboardViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
+@foreach (var model in Model.Entries){
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <div class="card">
+            <div class="card-title"> Placeholder Title </div>
+        </div>
+    </div>
+}
+
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="card">
+        <div class="card-header">Code Snippet: </div>
+        <div class="card-subtitle">Placeholder Coding Language </div>
+        <div class="card-body">Placeholder Snippet</div>
+    </div>
 </div>

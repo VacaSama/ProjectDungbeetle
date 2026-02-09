@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectDungbeetle.Data;
 
@@ -10,9 +11,11 @@ using ProjectDungbeetle.Data;
 namespace ProjectDungbeetle.Migrations
 {
     [DbContext(typeof(DungbeetleDbContext))]
-    partial class DungbeetleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260209023203_Finished-Models;SeedData")]
+    partial class FinishedModelsSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
