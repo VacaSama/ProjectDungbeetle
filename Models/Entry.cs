@@ -44,7 +44,7 @@ public class Entry
 
     /// <summary>
     /// Allows the user to save notes about the error, code snippet, or general concepts .
-    /// Notes are required, but highly encouraged.
+    /// Notes are required.
     /// </summary>
     public required string Notes { get; set; }
 
