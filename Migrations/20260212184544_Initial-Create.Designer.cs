@@ -11,8 +11,8 @@ using ProjectDungbeetle.Data;
 namespace ProjectDungbeetle.Migrations
 {
     [DbContext(typeof(DungbeetleDbContext))]
-    [Migration("20260209023203_Finished-Models;SeedData")]
-    partial class FinishedModelsSeedData
+    [Migration("20260212184544_Initial-Create")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
