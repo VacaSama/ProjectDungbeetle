@@ -11,7 +11,7 @@ using ProjectDungbeetle.Data;
 namespace ProjectDungbeetle.Migrations
 {
     [DbContext(typeof(DungbeetleDbContext))]
-    [Migration("20260215184656_Initial-Create")]
+    [Migration("20260215191604_Initial-Create")]
     partial class InitialCreate
     {
         /// <inheritdoc />
