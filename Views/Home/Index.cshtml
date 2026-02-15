@@ -3,33 +3,60 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<h1 class="display-4">Welcome</h1>
+<h1 class="display-4">Welcome User!! (PlaceHolder)</h1>
+<div>
+<button type="button" class="btn btn-outline-dark">New Entry</button>
+</div>
 
 
 @* so long as the entry is not null and has a value *@
 @if(Model.Entries != null && Model.Entries.Any()) { 
     // for each entry print it as a card, with this content
     @foreach (var entry in Model.Entries){
-        <div class="text-center">
 
-            <div class="card">
-                <div class="card-title"> @entry.Title </div>
+        <div class="card text-bg-info" style="max-width: 540px;">
+            <div class="row g-0">
 
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@entry.Title</h5>
+                        <p class="card-text">@entry.CodeSnippet</p>
+                        <p class="card card-text">@entry.Notes</p> <!-- edit here-->
+                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        <button type="button" class= "btn btn-secondary btn-sm">Delete Entry</button>
+                    </div>
+                </div>
             </div>
-
         </div>
     }
 }
 else
 {
-    <p class="text-muted text-center">No journal entries yet.</p>
+    <p class="text-muted text-center">No entries found.</p>
 }
 
-@* @foreach (var model in Model.Entries) { }
-<div class="text-center">
-    <div class="card">
-        <div class="card-header">Code Snippet: </div>
-        <div class="card-subtitle">Placeholder Coding Language </div>
-        <div class="card-body">Placeholder Snippet</div>
-    </div>
-</div> *@
+
+@if (Model.Hints != null && Model.Hints.Any())
+{
+    foreach (var h in Model.Hints)
+    {
+        <button type="button" class="btn btn-primary" id="liveToastBtn">Show Hint</button>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Hint</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                    <!--RANDOM HINT GOES HERE-->
+                </div>
+            </div>
+        </div>
+    }
+}
+
+else
+{
+    <p>No Hints at this time</p>
+}

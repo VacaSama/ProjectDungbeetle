@@ -32,6 +32,7 @@ namespace ProjectDungbeetle.Controllers
                 // add models needed for the dashboard, 
                 // entry, and hints. 
                 Entries = _context.Entries.ToList(),
+                Hints = _context.Hints.ToList(),
             };
 
             

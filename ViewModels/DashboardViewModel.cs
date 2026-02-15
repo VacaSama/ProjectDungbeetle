@@ -22,7 +22,7 @@ public class DashboardViewModel
     ///  later the hints will also have its own section so that the user can view ALL hints. 
     ///  Hints are not user created.
     /// </summary>
-    public List<Hints>? Hints { get; set; }
+    public List<Hints>? Hints { get; set; } = new();
 
     /// <summary>
     /// Retrieves the Questionnaire for the new user to be displayed as a modal on the dashboard, 
