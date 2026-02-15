@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
 <h1 class="display-4">Welcome User!! (PlaceHolder)</h1>
 <div>
 <button type="button" class="btn btn-outline-dark">New Entry</button>
@@ -59,4 +60,13 @@ else
 else
 {
     <p>No Hints at this time</p>
+}
+
+@*Serializing the Hints for JS to use and access*@
+
+@section scripts { 
+    <script>
+        window.dashboardHints = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Hints.Select(h => h.HintText)));
+    </script>
+    <script src="~/js/dashboard.js"></script>
 }
