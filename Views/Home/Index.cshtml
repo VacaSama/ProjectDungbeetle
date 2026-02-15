@@ -5,14 +5,23 @@
 }
 <h1 class="display-4">Welcome</h1>
 
-@foreach (var entry in Model.Entries){
-    <div class="text-center">
 
-        <div class="card">
-            <div class="card-title"> @entry.Title </div>
+@* so long as the entry is not null and has a value *@
+@if(Model.Entries != null && Model.Entries.Any()) { 
+    // for each entry print it as a card, with this content
+    @foreach (var entry in Model.Entries){
+        <div class="text-center">
+
+            <div class="card">
+                <div class="card-title"> @entry.Title </div>
+            </div>
+
         </div>
-
-    </div>
+    }
+}
+else
+{
+    <p class="text-muted text-center">No journal entries yet.</p>
 }
 
 @* @foreach (var model in Model.Entries) { }

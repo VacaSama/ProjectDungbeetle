@@ -27,14 +27,15 @@ namespace ProjectDungbeetle.Controllers
         {
             // this creates a new viewmodel object for the dashboard view. 
             // with the information from the seeded database. _context.Entries, _context.Hints...
-            var vm = new DashboardViewModel
+            var vm = new DashboardViewModel()
             {
                 // add models needed for the dashboard, 
                 // entry, and hints. 
+                Entries = _context.Entries.ToList(),
             };
 
             
-            return View();
+            return View(vm);
         }
 
         public IActionResult Privacy()
