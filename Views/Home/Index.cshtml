@@ -4,9 +4,54 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="display-4">Welcome User!! (PlaceHolder)</h1>
-<div>
-<button type="button" class="btn btn-outline-dark">New Entry</button>
+<h1 class="display-4">Welcome (PlaceHolder)</h1>
+
+<!-- **** MODAL FOR ENTRY ****-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New Entry</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="entry-title" class="col-form-label">*Entry Title:</label>
+                        <input type="text" class="form-control" id="entry-txt">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="codinglanguage-type" class="col-form-label">*Coding Language</label>
+                        <input type="text" class="form-control" id="codelanguage-txt">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="code-snippet" class="col-form-label">*Code Snippet:</label>
+                        <textarea class="form-control" id="code-snip"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="code-snippet" class="col-form-label">Error Description:</label>
+                        <textarea class="form-control" id="code-snip">If the code snippet has an error attached, add it here</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="notes-text" class="col-form-label">*Notes:</label>
+                        <textarea class="form-control" id="notes"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -22,9 +67,11 @@
                     <div class="card-body">
                         <h5 class="card-title">@entry.Title</h5>
                         <p class="card-text">@entry.CodeSnippet</p>
-                        <p class="card card-text">@entry.Notes</p> <!-- edit here-->
+                        <p class="card card-text">@entry.Notes</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                        <button type="button" class= "btn btn-secondary btn-sm">Delete Entry</button>
+
+                        <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>  <!-- edit button-->
+                        <button type="button" class="btn btn-secondary btn-sm">Delete Entry</button>  <!--delete button-->
                     </div>
                 </div>
             </div>
@@ -36,37 +83,31 @@ else
     <p class="text-muted text-center">No entries found.</p>
 }
 
+@* TOAST button for Randomized hint pop-ups*@
+<button id="liveToastBtn" class="btn btn-primary">Show Hint</button>
 
-@if (Model.Hints != null && Model.Hints.Any())
-{
-    foreach (var h in Model.Hints)
-    {
-        <button type="button" class="btn btn-primary" id="liveToastBtn">Show Hint</button>
-
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <strong class="me-auto">Hint</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-                </div>
-                <div class="toast-body">
-                    <!--RANDOM HINT GOES HERE-->
-                </div>
-            </div>
+@*Here is the content and the position for the Toast, toast-body is left blank intentionally*@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastHint" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Hint</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
         </div>
-    }
-}
+        <div id="hintText" class="toast-body"> <!--Random Hints go here, see dashboard.js--> </div>
+    </div>
+</div>
 
-else
-{
-    <p>No Hints at this time</p>
-}
 
 @*Serializing the Hints for JS to use and access*@
 
-@section scripts { 
+@section Scripts { 
     <script>
-        window.dashboardHints = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Hints.Select(h => h.HintText)));
+        //
+        window.dashboardHints = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+            Model.Hints?.Select(h => h.HintText)));
     </script>
+
     <script src="~/js/dashboard.js"></script>
 }
+
+
