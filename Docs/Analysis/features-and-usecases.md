@@ -105,3 +105,19 @@ Goal: Load all of the users' saved data,
 so that they can pick up where they left off.
 
 ---
+
+## Use Case Traceability Table
+
+| Use Cases | Features 
+|---------|--------|
+| UC1: < Create a New Entry >  | F1, F2, F4 |
+| UC2: < Edit/Update Entry > | F1, F2, F4 |
+| UC3: < Delete Entry > | F1, F2, F4 |
+| UC4: < Search Past Entries > | F1, F2, F4, F5 |
+| UC5: < Update User Response > | F2, F3, F4 |
+| UC6: < Complete and Store Questionnaire Response> | F1, F4 |
+| UC7: < View All Hints > | F5, F6 |
+| UC8: < Receive randomized hint >| F2, F6 |
+| UC9: < Load Last Saved >| F4 |
+
+---
