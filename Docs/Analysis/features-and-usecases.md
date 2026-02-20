@@ -121,3 +121,11 @@ so that they can pick up where they left off.
 | UC9: < Load Last Saved >| F4 |
 
 ---
+
+## Features and Use Case Diagram
+![use-case-diagram](use-case-diagram.png)
+
+**This diagram shows the relationships between
+features and use cases*
+
+---
