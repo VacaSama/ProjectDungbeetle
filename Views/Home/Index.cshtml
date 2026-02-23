@@ -22,30 +22,31 @@
                 <form>
                     <div class="mb-3">
                         <label for="entry-title" class="col-form-label">*Entry Title:</label>
-                        <input type="text" class="form-control" id="entry-txt">
+                        <input type="text" class="form-control" id="entry-txt" placeholder="Hello World!">
                     </div>
 
                     <div class="mb-3">
-                        <label for="codinglanguage-type" class="col-form-label">*Coding Language</label>
-                        <input type="text" class="form-control" id="codelanguage-txt">
+                        <label for="codinglanguage-type" class="col-form-label" >*Coding Language</label>
+                        <input type="text" class="form-control" id="codelanguage-txt" placeholder="C#">
                     </div>
 
                     <div class="mb-3">
                         <label for="code-snippet" class="col-form-label">*Code Snippet:</label>
-                        <textarea class="form-control" id="code-snip"></textarea>
+                        <textarea class="form-control" id="code-snip" placeholder="<Code Here>"></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="code-snippet" class="col-form-label">Error Description:</label>
-                        <textarea class="form-control" id="code-snip">If the code snippet has an error attached, add it here</textarea>
+                        <textarea class="form-control" id="code-snip" placeholder="Place Error Code/Error Type Here"></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="notes-text" class="col-form-label">*Notes:</label>
-                        <textarea class="form-control" id="notes"></textarea>
+                        <textarea class="form-control" id="notes" placeholder="Hello, I am a Note"></textarea>
                     </div>
                 </form>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary">Add</button>
@@ -68,8 +69,9 @@
                         <h5 class="card-title">@entry.Title</h5>
                         <p class="card-text">@entry.CodeSnippet</p>
                         <p class="card card-text">@entry.Notes</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><small class="text-body-secondary">Error Description: @entry.ErrorDescription</small></p>
 
+                        <p class="card-text"><small class="text-body-secondary">DateTime Placeholder: Last updated 3 mins ago</small></p>
                         <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>  <!-- edit button-->
                         <button type="button" class="btn btn-secondary btn-sm">Delete Entry</button>  <!--delete button-->
                     </div>
