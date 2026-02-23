@@ -55,7 +55,7 @@
     </div>
 </div>
 
-
+ 
 @* so long as the entry is not null and has a value *@
 @if(Model.Entries != null && Model.Entries.Any()) { 
     // for each entry print it as a card, with this content
@@ -85,7 +85,7 @@ else
     <p class="text-muted text-center">No entries found.</p>
 }
 
-@* TOAST button for Randomized hint pop-ups*@
+@* TOAST button for Randomized hint pop-ups, DO NOT REMOVE*@
 <button id="liveToastBtn" class="btn btn-primary">Show Hint</button>
 
 @*Here is the content and the position for the Toast, toast-body is left blank intentionally*@
@@ -100,7 +100,7 @@ else
 </div>
 
 
-@*Serializing the Hints for JS to use and access*@
+@*Serializing the Hints for JS to use and access, DO NOT REMOVE *@
 
 @section Scripts { 
     <script>

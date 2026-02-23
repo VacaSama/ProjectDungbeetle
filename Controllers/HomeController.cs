@@ -39,6 +39,43 @@ namespace ProjectDungbeetle.Controllers
             return View(vm);
         }
 
+        /// <summary>
+        /// This method allows the user to add a new entry to their 
+        /// Project Dungbeetle entry journal
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost] // create and post entry to the database
+        public IActionResult AddEntry()
+        {
+            var vm = new DashboardViewModel();
+            return View();
+        }
+
+        /// <summary>
+        /// This method is attached to the search field in the navbar and allows users to 
+        /// search through their entries for keywords within their notes, code snippets, 
+        /// error descriptions and entry titles. 
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult SearchBar()
+        {
+            var vm = new DashboardViewModel();
+            return View();
+        }
+
+        /// <summary>
+        /// This method is attached to the dropdown in the navbar and allows users to 
+        /// filter through their entries: Newest, Oldest or Default (Newest)
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet] // retrieve the filter wanted 
+        public IActionResult FilterEntry() 
+        {
+            var vm = new DashboardViewModel();
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
