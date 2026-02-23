@@ -1,8 +1,115 @@
-﻿@{
+﻿@model ProjectDungbeetle.ViewModels.DashboardViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="display-4">Welcome (PlaceHolder)</h1>
+
+<!-- **** MODAL FOR ENTRY ****-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New Entry</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="entry-title" class="col-form-label">*Entry Title:</label>
+                        <input type="text" class="form-control" id="entry-txt" placeholder="Hello World!">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="codinglanguage-type" class="col-form-label" >*Coding Language</label>
+                        <input type="text" class="form-control" id="codelanguage-txt" placeholder="C#">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="code-snippet" class="col-form-label">*Code Snippet:</label>
+                        <textarea class="form-control" id="code-snip" placeholder="<Code Here>"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="code-snippet" class="col-form-label">Error Description:</label>
+                        <textarea class="form-control" id="code-snip" placeholder="Place Error Code/Error Type Here"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="notes-text" class="col-form-label">*Notes:</label>
+                        <textarea class="form-control" id="notes" placeholder="Hello, I am a Note"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+ 
+@* so long as the entry is not null and has a value *@
+@if(Model.Entries != null && Model.Entries.Any()) { 
+    // for each entry print it as a card, with this content
+    @foreach (var entry in Model.Entries){
+
+        <div class="card text-bg-info" style="max-width: 540px;">
+            <div class="row g-0">
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@entry.Title</h5>
+                        <p class="card-text">@entry.CodeSnippet</p>
+                        <p class="card card-text">@entry.Notes</p>
+                        <p class="card-text"><small class="text-body-secondary">Error Description: @entry.ErrorDescription</small></p>
+
+                        <p class="card-text"><small class="text-body-secondary">DateTime Placeholder: Last updated 3 mins ago</small></p>
+                        <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>  <!-- edit button-->
+                        <button type="button" class="btn btn-secondary btn-sm">Delete Entry</button>  <!--delete button-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p class="text-muted text-center">No entries found.</p>
+}
+
+@* TOAST button for Randomized hint pop-ups, DO NOT REMOVE*@
+<button id="liveToastBtn" class="btn btn-primary">Show Hint</button>
+
+@*Here is the content and the position for the Toast, toast-body is left blank intentionally*@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastHint" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Hint</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div id="hintText" class="toast-body"> <!--Random Hints go here, see dashboard.js--> </div>
+    </div>
+</div>
+
+
+@*Serializing the Hints for JS to use and access, DO NOT REMOVE *@
+
+@section Scripts { 
+    <script>
+        //
+        window.dashboardHints = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+            Model.Hints?.Select(h => h.HintText)));
+    </script>
+
+    <script src="~/js/dashboard.js"></script>
+}
+
+
