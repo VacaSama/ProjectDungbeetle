@@ -2,7 +2,8 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDungbeetle.Models;
 using ProjectDungbeetle.ViewModels;
-using ProjectDungbeetle.Data; 
+using ProjectDungbeetle.Data;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ProjectDungbeetle.Controllers
 {
@@ -20,7 +21,7 @@ namespace ProjectDungbeetle.Controllers
         /// <param name="context"></param>
         public HomeController(DungbeetleDbContext context)
         {
-            _context = context; 
+            _context = context;
         }
 
         public IActionResult Index()
@@ -35,7 +36,7 @@ namespace ProjectDungbeetle.Controllers
                 Hints = _context.Hints.ToList(),
             };
 
-            
+
             return View(vm);
         }
 
@@ -52,28 +53,49 @@ namespace ProjectDungbeetle.Controllers
         }
 
         /// <summary>
-        /// This method is attached to the search field in the navbar and allows users to 
-        /// search through their entries for keywords within their notes, code snippets, 
-        /// error descriptions and entry titles. 
-        /// </summary>
+        /// This method contains logic both used for the dropdown and the search tool 
+        /// in the navbar and allows users to filter through their entries: Newest, Oldest
+        /// or Default (Newest). It also allows the use to search through their entries 
+        /// for keywords within their notes, error descriptions and entry titles. 
+        /// </summary
+        /// <param name="sort"></param>
+        /// <param name="search"></param>
         /// <returns></returns>
-        public IActionResult SearchBar()
-        {
-            var vm = new DashboardViewModel();
-            return View();
-        }
 
-        /// <summary>
-        /// This method is attached to the dropdown in the navbar and allows users to 
-        /// filter through their entries: Newest, Oldest or Default (Newest)
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet] // retrieve the filter wanted 
-        public IActionResult FilterEntry() 
+        [HttpGet] // retrieve the filter/search wanted 
+        public IActionResult SortSearch(string sort, string search)
         {
-            var vm = new DashboardViewModel();
+            var entriesQuery = _context.Entries.AsQueryable();
 
-            return View();
+            if (!string.IsNullOrEmpty(search))
+            {
+                entriesQuery = entriesQuery.Where(e =>
+                    e.Title.Contains(search) ||
+                    e.Notes.Contains(search));
+            }
+
+            // Switch case for the dropdown 
+            switch (sort)
+            {
+                case "newest":
+                    entriesQuery = entriesQuery.OrderByDescending(e => e.CreatedAt);
+                    break;
+
+                case "oldest":
+                    entriesQuery = entriesQuery.OrderBy(e => e.CreatedAt);
+                    break;
+
+                default:
+                    entriesQuery = entriesQuery.OrderByDescending(e => e.CreatedAt);
+                    break;
+            }
+
+            var vm = new DashboardViewModel
+            {
+                Entries = entriesQuery.ToList(),
+            };
+
+            return View("Index", vm);
         }
 
         public IActionResult Privacy()

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -20,7 +21,8 @@ namespace ProjectDungbeetle.Migrations
                     ErrorDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CodingLanguage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CodeSnippet = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
