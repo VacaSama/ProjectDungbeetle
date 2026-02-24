@@ -6,7 +6,41 @@
 
 <h1 class="display-4">Welcome (PlaceHolder)</h1>
 
-<!-- **** MODAL FOR ENTRY ****-->
+<!--MODAL FOR THE QUESTIONNAIRE - DO NOT REMOVE -->
+
+@* 
+<div class="modal fade" id="questionnaireModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Questionnaire</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body"> *@
+
+
+                @* Loop through your questions *@
+                @* @foreach (var question in Model.Questionnaire)
+                {
+                    <p>@question.QuestionText</p>
+                    @foreach (var opt in question.Options)
+                    {
+                        // could the question have multiple answers, if yes = checkbox
+                        <input type="@(question.IsMultiple ? "checkbox" : "radio")"
+                               name="question_@question.Id"
+                               value="@opt.Id" /> @opt.Options <br/>
+                    }
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Skip</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+<!-- **** MODAL FOR ENTRY DO NOT REMOVE****-->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using ProjectDungbeetle.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProjectDungbeetle.Data;
 
@@ -66,7 +67,7 @@ public class SeedData
                     "\nConsider adding print statements to trace variable values.",
                     HintCategory = "Logic"
                 },
-
+                
                 new Models.Hints // Hint 3
                 {
                     HintText = "\"Remember to name variables meaningfully; vague names like 'x' " +
@@ -96,29 +97,29 @@ public class SeedData
 
                 new Models.Hints // Hint 7
                 {
-                    HintText = "Use loops wisely: a for-loop is ideal when you know the iteration count;" +
-                    "\na while-loop works when you need a condition-based loop.",
-                    HintCategory = "Logic"
+                    HintText = "Avoid Mismatched Data Types, assigning a value to a variable of an incompatible type" +
+                    "\ncan lead to errors,such as trying to add an integer to a string.",
+                    HintCategory = "Best Practices"
                 }
             );
         }
 
-
         if (!context.Questionnaires.Any())
         {
             // *** SAMPLE QUESTIONS FOR QUESTIONNAIRE **** 
+            // For the options split the strings up before the comma(,)
             context.Questionnaires.AddRange(
                 new Models.Questionnaire
                 {
                     QuestionText = "Which coding language(s) are you learning? Check all that apply.",
-                    QuestionType = QuestionType.Checkbox,
+                    IsMultiple = true, // this is a checkbox question
                     Options = "C#, Java, Python, C++, JavaScript", // starting with simple options for now...
                 },
 
                 new Models.Questionnaire
                 {
                     QuestionText = "How confident do you feel about your coding skills overall?",
-                    QuestionType = QuestionType.RadioButton,
+                    IsMultiple = false, // this is a radio button
                     Options = "Very Confident, Somewhat Confident, Neutral, Somewhat Unconfident, Very Unconfident"
 
                 },
@@ -126,14 +127,14 @@ public class SeedData
                 new Models.Questionnaire
                 {
                     QuestionText = "What type of coding problems do you struggle with the most? Check all that apply.",
-                    QuestionType = QuestionType.Checkbox,
+                    IsMultiple = true,// this is a checkbox question
                     Options = "Syntax Errors, Logic Errors, Debugging, Understanding Concepts"
                 },
 
                 new Models.Questionnaire
                 {
                     QuestionText = "What are you using Project Dungbeetle for?",
-                    QuestionType = QuestionType.RadioButton,
+                    IsMultiple = false, // this is a radio button
                     Options = "Personal Use, Professional Improvement, Academic Purposes, For Fun"
                 }
             );

@@ -41,12 +41,36 @@ namespace ProjectDungbeetle.Controllers
         }
 
         /// <summary>
-        /// This method allows the user to add a new entry to their 
+        /// This method allows the user to ADD a new entry to their 
         /// Project Dungbeetle entry journal
         /// </summary>
         /// <returns></returns>
         [HttpPost] // create and post entry to the database
         public IActionResult AddEntry()
+        {
+            var vm = new DashboardViewModel();
+            return View();
+        }
+
+        /// <summary>
+        /// This method allows the user to UPDATE a selected entry in their 
+        /// Project Dungbeetle entry journal
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost] // create and post entry to the database
+        public IActionResult UpdateEntry()
+        {
+            var vm = new DashboardViewModel();
+            return View();
+        }
+
+        /// <summary>
+        /// This method allows the user to DELETE a selected entry in their 
+        /// Project Dungbeetle entry journal
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost] // create and post entry to the database
+        public IActionResult DeleteEntry()
         {
             var vm = new DashboardViewModel();
             return View();

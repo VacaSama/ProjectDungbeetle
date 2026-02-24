@@ -65,7 +65,7 @@ namespace ProjectDungbeetle.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QuestionType = table.Column<int>(type: "int", nullable: false),
+                    IsMultiple = table.Column<bool>(type: "bit", nullable: false),
                     Options = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

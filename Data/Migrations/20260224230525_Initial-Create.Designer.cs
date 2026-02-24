@@ -12,8 +12,8 @@ using ProjectDungbeetle.Data;
 namespace ProjectDungbeetle.Migrations
 {
     [DbContext(typeof(DungbeetleDbContext))]
-    [Migration("20260224213104_sample-data-update")]
-    partial class sampledataupdate
+    [Migration("20260224230525_Initial-Create")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,6 +89,9 @@ namespace ProjectDungbeetle.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsMultiple")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Options")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -96,9 +99,6 @@ namespace ProjectDungbeetle.Migrations
                     b.Property<string>("QuestionText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("QuestionType")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -28,7 +28,7 @@ public class DashboardViewModel
     /// Retrieves the Questionnaire for the new user to be displayed as a modal on the dashboard, 
     /// this is used to get basic user information such as programming experience, goals, etc.
     /// </summary>
-    public Questionnaire? Questionnaire { get; set; }
+    public List<Questionnaire>? Questionnaire { get; set; }
 
     /// <summary>
     /// Retrieves the users response from the questionnaire that they filled out, 
@@ -36,5 +36,5 @@ public class DashboardViewModel
     /// it will also be displayed on the dashboard. 
     /// This is nullable because the user may have skipped the questionnaire.
     /// </summary>
-    public QuestionnaireResponse? UserResponse { get; set; }
+    public List<QuestionnaireResponse>? UserResponse { get; set; }
 }

@@ -86,6 +86,9 @@ namespace ProjectDungbeetle.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsMultiple")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Options")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -93,9 +96,6 @@ namespace ProjectDungbeetle.Migrations
                     b.Property<string>("QuestionText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("QuestionType")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
