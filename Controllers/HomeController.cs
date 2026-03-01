@@ -46,10 +46,27 @@ namespace ProjectDungbeetle.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost] // create and post entry to the database
-        public IActionResult AddEntry()
+        public IActionResult AddEntry(DashboardViewModel vm)
         {
-            var vm = new DashboardViewModel();
-            return View();
+            if(!ModelState.IsValid)
+            {
+                return View("Index", vm);
+            }
+
+            var entry = new Entry
+            {
+                Title = vm.Entry.Title,
+                ErrorDescription = vm.Entry.ErrorDescription,
+                CodingLanguage = vm.Entry.CodingLanguage,
+                CodeSnippet = vm.Entry.CodeSnippet,
+                Notes = vm.Entry.Notes,
+                CreatedAt = DateTime.Now,
+            };
+
+            _context.Entries.Add(entry);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -95,6 +112,7 @@ namespace ProjectDungbeetle.Controllers
             {
                 entriesQuery = entriesQuery.Where(e =>
                     e.Title.Contains(search) ||
+                    e.ErrorDescription.Contains(search) ||
                     e.Notes.Contains(search));
             }
 
