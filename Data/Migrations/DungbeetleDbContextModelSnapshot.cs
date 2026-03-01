@@ -54,7 +54,7 @@ namespace ProjectDungbeetle.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Entries");
+                    b.ToTable("Entries", (string)null);
                 });
 
             modelBuilder.Entity("ProjectDungbeetle.Models.Hints", b =>
@@ -75,7 +75,7 @@ namespace ProjectDungbeetle.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hints");
+                    b.ToTable("Hints", (string)null);
                 });
 
             modelBuilder.Entity("ProjectDungbeetle.Models.Questionnaire", b =>
@@ -99,7 +99,7 @@ namespace ProjectDungbeetle.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Questionnaires");
+                    b.ToTable("Questionnaires", (string)null);
                 });
 
             modelBuilder.Entity("ProjectDungbeetle.Models.QuestionnaireResponse", b =>
@@ -122,7 +122,7 @@ namespace ProjectDungbeetle.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("QuestionnaireResponses");
+                    b.ToTable("QuestionnaireResponses", (string)null);
                 });
 
             modelBuilder.Entity("ProjectDungbeetle.Models.UserProfile", b =>
@@ -149,7 +149,7 @@ namespace ProjectDungbeetle.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserProfiles");
+                    b.ToTable("UserProfiles", (string)null);
                 });
 #pragma warning restore 612, 618
         }

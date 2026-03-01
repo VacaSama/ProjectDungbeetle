@@ -75,10 +75,31 @@ namespace ProjectDungbeetle.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost] // create and post entry to the database
-        public IActionResult UpdateEntry()
+        public IActionResult UpdateEntry(DashboardViewModel vm)
         {
-            var vm = new DashboardViewModel();
-            return View();
+            if (ModelState.IsValid){
+                return View("Index", vm);
+            }
+            
+
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == vm.Entry.Id);
+            if (entry == null)
+            {
+                throw new Exception("No entry was found");
+            }
+            // Update the properties
+            entry.Title = vm.Entry.Title;
+            entry.CodingLanguage = vm.Entry.CodingLanguage;
+            entry.CodeSnippet = vm.Entry.CodeSnippet;
+            entry.ErrorDescription = vm.Entry.ErrorDescription;
+            entry.Notes = vm.Entry.Notes;
+            entry.CreatedAt = DateTime.Now;    
+
+            _context.Entries.Update(entry);
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -86,7 +107,7 @@ namespace ProjectDungbeetle.Controllers
         /// Project Dungbeetle entry journal
         /// </summary>
         /// <returns></returns>
-        [HttpPost] // create and post entry to the database
+        [HttpDelete] // create and post entry to the database
         public IActionResult DeleteEntry()
         {
             var vm = new DashboardViewModel();
