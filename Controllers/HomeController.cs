@@ -107,11 +107,19 @@ namespace ProjectDungbeetle.Controllers
         /// Project Dungbeetle entry journal
         /// </summary>
         /// <returns></returns>
-        [HttpDelete] // create and post entry to the database
-        public IActionResult DeleteEntry()
+        [HttpPost] // create and post entry to the database
+        public IActionResult DeleteEntry(int id)
         {
-            var vm = new DashboardViewModel();
-            return View();
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == e.Id);
+            if (entry == null)
+            {
+                throw new Exception("Could not delete entry, deletion error");
+            }
+
+            _context.Entries.Remove(entry);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         /// <summary>
