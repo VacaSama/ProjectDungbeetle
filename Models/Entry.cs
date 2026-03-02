@@ -48,4 +48,10 @@ public class Entry
     /// </summary>
     public required string Notes { get; set; }
 
+    /// <summary>
+    /// Updates the users entry date and time so that they are able to sort 
+    /// by newest, oldest or go back to how it was sorted by default. 
+    /// </summary>
+    public required DateTime CreatedAt { get; set; } = DateTime.Now;
+
 }

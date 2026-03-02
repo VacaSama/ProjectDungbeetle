@@ -4,10 +4,46 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="display-4">Welcome (PlaceHolder)</h1>
+<h1 class="display-4">Welcome to Project Dungbeetle!</h1>
+<h2> Your personal coding bulletin!</h2>
 
-<!-- **** MODAL FOR ENTRY ****-->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
+<!--MODAL FOR THE QUESTIONNAIRE - DO NOT REMOVE -->
+
+@* 
+<div class="modal fade" id="questionnaireModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Questionnaire</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body"> *@
+
+
+                @* Loop through your questions *@
+                @* @foreach (var question in Model.Questionnaire)
+                {
+                    <p>@question.QuestionText</p>
+                    @foreach (var opt in question.Options)
+                    {
+                        // could the question have multiple answers, if yes = checkbox
+                        <input type="@(question.IsMultiple ? "checkbox" : "radio")"
+                               name="question_@question.Id"
+                               value="@opt.Id" /> @opt.Options <br/>
+                    }
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Skip</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+
+<!-- **** MODAL FOR ENTRY DO NOT REMOVE****-->
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -18,50 +54,50 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
-                <form>
+            <!-- Single form wrapping both modal-body and modal-footer -->
+            <form asp-action="AddEntry" method="post">
+                <div class="modal-body">
                     <div class="mb-3">
                         <label for="entry-title" class="col-form-label">*Entry Title:</label>
-                        <input type="text" class="form-control" id="entry-txt" placeholder="Hello World!">
+                        <input type="text" class="form-control" asp-for="Entry.Title" placeholder="Hello World!">
                     </div>
 
                     <div class="mb-3">
-                        <label for="codinglanguage-type" class="col-form-label" >*Coding Language</label>
-                        <input type="text" class="form-control" id="codelanguage-txt" placeholder="C#">
+                        <label for="codinglanguage-type" class="col-form-label">*Coding Language</label>
+                        <input type="text" class="form-control" asp-for="Entry.CodingLanguage" placeholder="C#">
                     </div>
 
                     <div class="mb-3">
                         <label for="code-snippet" class="col-form-label">*Code Snippet:</label>
-                        <textarea class="form-control" id="code-snip" placeholder="<Code Here>"></textarea>
+                        <textarea class="form-control" asp-for="Entry.CodeSnippet" placeholder="<Code Here>"></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="code-snippet" class="col-form-label">Error Description:</label>
-                        <textarea class="form-control" id="code-snip" placeholder="Place Error Code/Error Type Here"></textarea>
+                        <textarea class="form-control" asp-for="Entry.ErrorDescription" placeholder="Place Error Code/Error Type Here"></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="notes-text" class="col-form-label">*Notes:</label>
-                        <textarea class="form-control" id="notes" placeholder="Hello, I am a Note"></textarea>
+                        <textarea class="form-control" asp-for="Entry.Notes" placeholder="Hello, I am a Note"></textarea>
                     </div>
-                </form>
-            </div>
+                </div> <!-- closes modal-body -->
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form> <!-- closes form -->
         </div>
     </div>
 </div>
-
  
 @* so long as the entry is not null and has a value *@
 @if(Model.Entries != null && Model.Entries.Any()) { 
     // for each entry print it as a card, with this content
     @foreach (var entry in Model.Entries){
 
-        <div class="card text-bg-info" style="max-width: 540px;">
+        <div class="card border-light mb-3" style="max-width: 500px;">
             <div class="row g-0">
 
                 <div class="col-md-8">
@@ -71,9 +107,16 @@
                         <p class="card card-text">@entry.Notes</p>
                         <p class="card-text"><small class="text-body-secondary">Error Description: @entry.ErrorDescription</small></p>
 
-                        <p class="card-text"><small class="text-body-secondary">DateTime Placeholder: Last updated 3 mins ago</small></p>
+                        <p class="card-text"><small class="text-body-secondary">Last Updated: @entry.CreatedAt</small></p>
+                        
+                        
                         <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>  <!-- edit button-->
-                        <button type="button" class="btn btn-secondary btn-sm">Delete Entry</button>  <!--delete button-->
+
+
+                        <form asp-action="DeleteEntry" method="post" onsubmit="return confirm('Are you sure you want to delete: @entry.Title');" style="display:inline;">
+                            <input type="hidden" name="entryId" value="@entry.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete Entry</button>  <!--delete button-->
+                        </form>
                     </div>
                 </div>
             </div>

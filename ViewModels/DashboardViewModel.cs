@@ -11,11 +11,19 @@ public class DashboardViewModel
     public UserProfile? UserProfile { get; set; }
 
     /// <summary>
-    ///  Retrieves the users entries to be displayed on the dashboard, 
+    /// Gives the user the ability to create a new entry directly from the dashboard,
+    /// using a blank template. This is nullable because the user may not want to create a new entry.
+    ///  
+    /// THIS IS A SINGLE ENTITY!!!
+    /// </summary>
+    public Entry? Entry { get; set; }
+
+    /// <summary>
+    ///  Retrieves the users existing entries to be displayed on the dashboard, 
     ///  this is nullable because the user at some point may not have any entries. 
     ///  Every new user starts with 1-2 sample entries to get them, familiar with the entry creation process
     /// </summary>
-    public List<Entry>? Entries { get; set; }
+    public List<Entry>? Entries { get; set; } // existing entries in the database 
 
     /// <summary>
     ///  Retrieves hitns from the database to be displayed on the dashboard, 
@@ -28,7 +36,7 @@ public class DashboardViewModel
     /// Retrieves the Questionnaire for the new user to be displayed as a modal on the dashboard, 
     /// this is used to get basic user information such as programming experience, goals, etc.
     /// </summary>
-    public Questionnaire? Questionnaire { get; set; }
+    public List<Questionnaire>? Questionnaire { get; set; }
 
     /// <summary>
     /// Retrieves the users response from the questionnaire that they filled out, 
@@ -36,5 +44,5 @@ public class DashboardViewModel
     /// it will also be displayed on the dashboard. 
     /// This is nullable because the user may have skipped the questionnaire.
     /// </summary>
-    public QuestionnaireResponse? UserResponse { get; set; }
+    public List<QuestionnaireResponse>? UserResponse { get; set; }
 }

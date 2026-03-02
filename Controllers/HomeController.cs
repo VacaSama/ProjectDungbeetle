@@ -2,7 +2,8 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDungbeetle.Models;
 using ProjectDungbeetle.ViewModels;
-using ProjectDungbeetle.Data; 
+using ProjectDungbeetle.Data;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ProjectDungbeetle.Controllers
 {
@@ -20,7 +21,7 @@ namespace ProjectDungbeetle.Controllers
         /// <param name="context"></param>
         public HomeController(DungbeetleDbContext context)
         {
-            _context = context; 
+            _context = context;
         }
 
         public IActionResult Index()
@@ -35,45 +36,138 @@ namespace ProjectDungbeetle.Controllers
                 Hints = _context.Hints.ToList(),
             };
 
-            
+
             return View(vm);
         }
 
         /// <summary>
-        /// This method allows the user to add a new entry to their 
+        /// This method allows the user to ADD a new entry to their 
         /// Project Dungbeetle entry journal
         /// </summary>
         /// <returns></returns>
         [HttpPost] // create and post entry to the database
-        public IActionResult AddEntry()
+        public IActionResult AddEntry(DashboardViewModel vm)
         {
-            var vm = new DashboardViewModel();
-            return View();
+            if(!ModelState.IsValid)
+            {
+                return View("Index", vm);
+            }
+
+            var entry = new Entry
+            {
+                Title = vm.Entry.Title,
+                ErrorDescription = vm.Entry.ErrorDescription,
+                CodingLanguage = vm.Entry.CodingLanguage,
+                CodeSnippet = vm.Entry.CodeSnippet,
+                Notes = vm.Entry.Notes,
+                CreatedAt = DateTime.Now,
+            };
+
+            _context.Entries.Add(entry);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         /// <summary>
-        /// This method is attached to the search field in the navbar and allows users to 
-        /// search through their entries for keywords within their notes, code snippets, 
-        /// error descriptions and entry titles. 
+        /// This method allows the user to UPDATE a selected entry in their 
+        /// Project Dungbeetle entry journal
         /// </summary>
         /// <returns></returns>
-        public IActionResult SearchBar()
+        [HttpPost] // create and post entry to the database
+        public IActionResult UpdateEntry(DashboardViewModel vm)
         {
-            var vm = new DashboardViewModel();
-            return View();
+            if (ModelState.IsValid){
+                return View("Index", vm);
+            }
+            
+
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == vm.Entry.Id);
+            if (entry == null)
+            {
+                throw new Exception("No entry was found");
+            }
+            // Update the properties
+            entry.Title = vm.Entry.Title;
+            entry.CodingLanguage = vm.Entry.CodingLanguage;
+            entry.CodeSnippet = vm.Entry.CodeSnippet;
+            entry.ErrorDescription = vm.Entry.ErrorDescription;
+            entry.Notes = vm.Entry.Notes;
+            entry.CreatedAt = DateTime.Now;    
+
+            _context.Entries.Update(entry);
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index");
         }
 
         /// <summary>
-        /// This method is attached to the dropdown in the navbar and allows users to 
-        /// filter through their entries: Newest, Oldest or Default (Newest)
+        /// This method allows the user to DELETE a selected entry in their 
+        /// Project Dungbeetle entry journal
         /// </summary>
         /// <returns></returns>
-        [HttpGet] // retrieve the filter wanted 
-        public IActionResult FilterEntry() 
+        [HttpPost] // create and post entry to the database
+        public IActionResult DeleteEntry(int id)
         {
-            var vm = new DashboardViewModel();
+            // ERROR LINE 114 !!!
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == e.Id); // SEE GITHUB ISSUE. ERROR HERE!!!
+            if (entry == null)
+            {
+                throw new Exception("Could not delete entry, deletion error");
+            }
 
-            return View();
+            _context.Entries.Remove(entry);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// This method contains logic both used for the dropdown and the search tool 
+        /// in the navbar and allows users to filter through their entries: Newest, Oldest
+        /// or Default (Newest). It also allows the use to search through their entries 
+        /// for keywords within their notes, error descriptions and entry titles. 
+        /// </summary
+        /// <param name="sort"></param>
+        /// <param name="search"></param>
+        /// <returns></returns>
+
+        [HttpGet] // retrieve the filter/search wanted 
+        public IActionResult SortSearch(string sort, string search)
+        {
+            var entriesQuery = _context.Entries.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                entriesQuery = entriesQuery.Where(e =>
+                    e.Title.Contains(search) ||
+                    e.ErrorDescription.Contains(search) ||
+                    e.Notes.Contains(search));
+            }
+
+            // Switch case for the dropdown 
+            switch (sort)
+            {
+                case "newest":
+                    entriesQuery = entriesQuery.OrderByDescending(e => e.CreatedAt);
+                    break;
+
+                case "oldest":
+                    entriesQuery = entriesQuery.OrderBy(e => e.CreatedAt);
+                    break;
+
+                default:
+                    entriesQuery = entriesQuery.OrderByDescending(e => e.CreatedAt);
+                    break;
+            }
+
+            var vm = new DashboardViewModel
+            {
+                Entries = entriesQuery.ToList(),
+            };
+
+            return View("Index", vm);
         }
 
         public IActionResult Privacy()
