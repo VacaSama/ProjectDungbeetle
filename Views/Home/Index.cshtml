@@ -41,6 +41,20 @@
     </div>
 </div> *@
 
+@* TOAST button for Randomized hint pop-ups, DO NOT REMOVE*@
+<button id="liveToastBtn" class="btn btn-primary mb-3">Show Hint</button>
+
+@*Here is the content and the position for the Toast, toast-body is left blank intentionally*@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastHint" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Hint</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div id="hintText" class="toast-body"> <!--Random Hints go here, see dashboard.js--> </div>
+    </div>
+</div>
+
 
 <!-- **** MODAL FOR ENTRY DO NOT REMOVE****-->
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
@@ -127,21 +141,6 @@ else
 {
     <p class="text-muted text-center">No entries found.</p>
 }
-
-@* TOAST button for Randomized hint pop-ups, DO NOT REMOVE*@
-<button id="liveToastBtn" class="btn btn-primary">Show Hint</button>
-
-@*Here is the content and the position for the Toast, toast-body is left blank intentionally*@
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="toastHint" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Hint</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-        </div>
-        <div id="hintText" class="toast-body"> <!--Random Hints go here, see dashboard.js--> </div>
-    </div>
-</div>
-
 
 @*Serializing the Hints for JS to use and access, DO NOT REMOVE *@
 
