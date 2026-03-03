@@ -33,17 +33,3 @@
 	Isolated via a Configuration Object, instead of hard-coding quesion 1, question 2 etc, etc, 
 	into the Questionnaire table, I have an Options property that can store multiple questions 
 	and options. 
-
-
-	### Guidance
-Commonalities are the stable core concepts and responsibilities that are UNLIKELY to change.
-
-
-Variabilities are the parts of the system likely to change (rules, policies, configurations,
-algorithms, integrations, formats, etc.).
-For each variability, you must include:
-
-- Why it may change (what scenario or requirement shift could cause it)
-- How it is isolated (interface, composition, configuration object, delegation, etc.)
-If you have already integrated those strategies into your code, then comment on the PR a link to where I can find evidence of that strategy. 
-- Avoid UI-driven descriptions (screens, buttons, framework-specific controllers). Focus on domain objects and responsibilities.
