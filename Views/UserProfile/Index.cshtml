@@ -12,3 +12,54 @@
 - View and Change your Questionnaire response answers <br />
 - Save your Updated questionnaire response answers
 </p>
+
+<div class="container" style="display:flex; flex-direction:column; align-items:center; text-align:center">
+    <form>
+        <!--User's name and Occupation-->
+
+        <div>
+            <label for="" class="col-form-label">Placeholder User Name</label>
+            <input class="form-control mb-3" type="text" placeholder="Your Name" aria-label="Disabled input example" disabled-readonly/>
+
+
+            <label for="" class="col-form-label"> Placeholder for Occupation</label>
+            <div class="dropdown-center mb-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select One
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Teacher/Instructor</a></li>
+                    <li><a class="dropdown-item" href="#">Software Developer</a></li>
+                    <li><a class="dropdown-item" href="#">Computer Programmer</a></li>
+                    <li><a class="dropdown-item" href="#">Student</a></li>
+                    <li><a class="dropdown-item" href="#">Other</a></li>
+                </ul>
+            </div>
+
+            <input class="form-control mb-3" style="" type="text" placeholder="Occupation Placeholder" aria-label="Disabled input example" disabled-readonly />
+        </div>
+
+
+        <!--Questionnaire Response Answers-->
+
+        <label for="" class="col-form-label">Question Text</label>
+        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 1" aria-label="Disabled input example" disabled />
+
+        <label for="" class="col-form-label">Question Text</label>
+        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 2" aria-label="Disabled input example" disabled />
+
+        <label for="" class="col-form-label">Question Text</label>
+        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 3" aria-label="Disabled input example" disabled />
+
+        <label for="" class="col-form-label">Question Text</label>
+        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 4" aria-label="Disabled input example" disabled />
+
+        <label for="" class="col-form-label">Question Text</label>
+        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 5" aria-label="Disabled input example" disabled />
+
+        <div class="">
+            <button type="button" class="btn btn-primary mb-4">Update Profile</button> <!--This button should enable the disabled fields and let the user update them-->
+            <button type="button" class="btn btn-primary mb-4">Save Changes</button> <!--Change the button TYPE to SUBMIT-->
+        </div>
+    </form>
+</div>
