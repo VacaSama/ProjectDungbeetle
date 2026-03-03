@@ -3,15 +3,47 @@
 # Commonality and Variability Analysis
 
 ## Commonalities
-- Stable concept 1
-- Stable concept 2
-- Stable concept 3
+- An entry must consist of a title, code snippet,coding language and created/updated at timestamps.
+- The Dashboard Creates, Reads, Updates and Deletes entries
+- The User Profile stores the questionnaire information and basic user information like their name.
 
 ## Variabilities
-- Variability 1
+- Required Notes => Nullable Notes
   - Why it may change:
+	
+	Not every user may want to add notes to their entry, 
+	they might want to just save a title and a code snippet without any additional information.
+	Especially if the user is in a hurry or just wanting to save a code snippet for later reference.
+	
   - How it is isolated:
+	
+	Currently the notes field is required because there is no separate page or form for Notes ONLY, 
+	that reference it's attached entry. There is also no blank notes section that allows the users
+	to add general notes that are NOT attached to a specific entry.
 
-- Variability 2
+- Questionnaire Schema
   - Why it may change:
+	
+	As the user progresses from a student to a professional, the "Self-Reflection" goals may change.
+	A student cares about learning a language, whereas a seasoned programmer cares about project milestones. 
+	The system needs to support different sets of questions without breaking the User Profile.
+	
   - How it is isolated:
+	
+	Isolated via a Configuration Object, instead of hard-coding quesion 1, question 2 etc, etc, 
+	into the Questionnaire table, I have an Options property that can store multiple questions 
+	and options. 
+
+
+	### Guidance
+Commonalities are the stable core concepts and responsibilities that are UNLIKELY to change.
+
+
+Variabilities are the parts of the system likely to change (rules, policies, configurations,
+algorithms, integrations, formats, etc.).
+For each variability, you must include:
+
+- Why it may change (what scenario or requirement shift could cause it)
+- How it is isolated (interface, composition, configuration object, delegation, etc.)
+If you have already integrated those strategies into your code, then comment on the PR a link to where I can find evidence of that strategy. 
+- Avoid UI-driven descriptions (screens, buttons, framework-specific controllers). Focus on domain objects and responsibilities.
