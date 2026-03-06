@@ -10,4 +10,6 @@ public class UserProfileViewModel
     public ExperienceLevel? ExperienceLevel { get; set; }
     public LearningLanguages LearningLanguages { get; set; }
     public IntendedUse IntendedUse { get; set; }
+
+    public List<Questionnaire>? Questionniare { get; set; }
 }
