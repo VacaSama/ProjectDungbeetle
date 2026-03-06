@@ -11,5 +11,7 @@ public class UserProfileViewModel
     public LearningLanguages LearningLanguages { get; set; }
     public IntendedUse IntendedUse { get; set; }
 
-    public List<Questionnaire>? Questionniare { get; set; }
+    public List<Questionnaire>? QuestionniareData { get; set; }
+
+    public List<QuestionnaireResponse>? UserResponseData { get; set; }
 }

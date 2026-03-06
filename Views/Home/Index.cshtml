@@ -9,37 +9,33 @@
 
 <!--MODAL FOR THE QUESTIONNAIRE - DO NOT REMOVE -->
 
-@* 
-<div class="modal fade" id="questionnaireModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Questionnaire</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body"> *@
 
+<div id="questionnaireModal" class="modal-overlay questionnaireModal" style="display: none;">
+    <div class="modal-content">
+        <h2>Hiya! Let's start with a few questions! &#128515</h2>
+        <hr />
 
-                @* Loop through your questions *@
-                @* @foreach (var question in Model.Questionnaire)
+        <form id="questionnaireForm">
+            @if (Model.Questionnaire != null)
+            {
+                @foreach (var q in Model.Questionnaire)
                 {
-                    <p>@question.QuestionText</p>
-                    @foreach (var opt in question.Options)
-                    {
-                        // could the question have multiple answers, if yes = checkbox
-                        <input type="@(question.IsMultiple ? "checkbox" : "radio")"
-                               name="question_@question.Id"
-                               value="@opt.Id" /> @opt.Options <br/>
-                    }
+                    <div class="question-block mb-3">
+                        <label>@q.QuestionText</label>
+
+
+                        <input type="text" name="q-@q.Id" class="form-control" />
+                    </div>
                 }
+            }
+
+            <div class="modal-buttons">
+                <button type="button" onclick="saveProfile()" class="btn btn-outline-success btn-save mb-3">Save & Finish</button>
+                <button type="button" onclick="closeModal()" class="btn btn-outline-warning btn-skip mb-3">Skip for now</button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Skip</button>
-                <button type="button" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
+        </form>
     </div>
-</div> *@
+</div>
 
 @* TOAST button for Randomized hint pop-ups, DO NOT REMOVE*@
 <button id="liveToastBtn" class="btn btn-primary mb-3">Show Hint</button>
@@ -59,12 +55,12 @@
 <!-- **** MODAL FOR ENTRY DO NOT REMOVE****-->
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="newEntryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">New Entry</h1>
+                <h1 class="modal-title fs-5" id="newEntryMLabel">New Entry</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 

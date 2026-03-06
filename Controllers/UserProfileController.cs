@@ -25,10 +25,13 @@ namespace ProjectDungbeetle.Controllers
 
         public IActionResult Index()
         {
-            var questions = _context.Questionnaires.ToList();
-            var userResponses = _context.QuestionnaireResponses.ToList();
+            var vm = new UserProfileViewModel()
+            {
+                QuestionniareData = _context.Questionnaires.ToList(),
+                UserResponseData = _context.QuestionnaireResponses.ToList()
+            };
 
-            return View(questions);
+            return View(vm);
         }
 
         // Retrieves the questions from the database for the user to answer

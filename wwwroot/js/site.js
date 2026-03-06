@@ -2,21 +2,29 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-async function checkAndShowModal() { 
-    // check Local Storage to see if the user has been here before 
-    const hasCompletedQuest = localStorage.getItem("user_completed_quest");
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("questionnaireModal");
 
+    // Check LocalStorage to see if they've finished it before
+    const isDone = localStorage.getItem("surveyFinished");
 
-    // if the user has NOT completed the questionnaire, show the modal 
-    if (!hasCompletedQuest) { 
-        // try to grab the modal elements
-        // the questions
-        // the user response
-
-        // display the questions onto the modal
-
-        // open the modal 
+    if (!isDone) {
+        // Show the modal if they haven't finished it
+        modal.style.display = "flex";
     }
+});
+
+function closeModal() {
+    // Just hides the modal. 
+    // Since we DON'T set "surveyFinished", it will pop up again next refresh!
+    document.getElementById("questionnaireModal").style.display = "none";
+}
+
+function saveProfile() {
+    // Logic to save data...
+    // Then set the flag so it stays hidden forever
+    localStorage.setItem("surveyFinished", "true");
+    document.getElementById("questionnaireModal").style.display = "none";
 }
 
 // create a function that restarts the questionnaire prompt, and clears it from the local storage

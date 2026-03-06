@@ -16,14 +16,15 @@
 </p>
 
 <div class="container" style="display:flex; flex-direction:column; align-items:center; text-align:center">
-    <form>
-        <!--User's name and Occupation-->
-
+    <!--IN THE FORM TAG add the method POST-->
+    <form>  
         <div>
+
+            <!--USERS PREFERRED NAME OR NICKNAME-->
             <label for="" class="col-form-label">Placeholder User Name</label>
-            <input class="form-control mb-3" type="text" placeholder="Your Name" aria-label="Disabled input example" disabled-readonly/>
+            <input class="form-control mb-3" type="text" placeholder="Your Name" asp-for="FullName" aria-label="Disabled input example" disabled-readonly/>
 
-
+            <!--USER OCCUPATION DROPDOWN-->
             <label for="" class="col-form-label"> Placeholder for Occupation</label>
             <div class="dropdown-center mb-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,18 +38,34 @@
                     <li><a class="dropdown-item" href="#">@UserOccupation.Other</a></li>
                 </ul>
             </div>
+            <input class="form-control mb-3" style="" type="text" placeholder="Occupation" asp-for="Occupation" aria-label="Disabled input example" disabled-readonly />
 
-            <input class="form-control mb-3" style="" type="text" placeholder="Occupation" aria-label="Disabled input example" disabled-readonly />
+            <!--USER EXPERIENCE LEVEL DROPDOWN-->
+            <label for="" class="col-form-label"> Placeholder for Experience Level </label>
+            <div class="dropdown-center mb-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select One
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Beginner</a></li>
+                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Intermediate</a></li>
+                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Advanced</a></li>
+                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Expert</a></li>
+                </ul>
+            </div>
+            <input class="form-control mb-3" style="" type="text" placeholder="Overall Coding Experience" asp-for="ExperienceLevel" aria-label="Disabled input example" disabled-readonly />
+            
+            <!-- DROPDOWN CHECK BOXES FOR CODING LANGUAGES THE USER IS LEARNING-->
         </div>
 
 
         <!--Questionnaire Response Answers-->
-        @if(Model.Questionniare != null && Model.Questionniare.Any()) { 
+@*         @if(Model.Questionniare != null && Model.Questionniare.Any()) { 
             @foreach(var question in Model.Questionniare)
                 {
                 <label for="" class="col-form-label">@question.QuestionText</label>
                 }
-        }
+        } *@
 
         <label for="" class="col-form-label">Question Text</label>
         <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 1" aria-label="Disabled input example" disabled />
