@@ -44,7 +44,13 @@ function saveProfile() {
 
 // Make a DEV Reset button to test the questionnaire, clears the local storage and reloads the page
 function resetQuest() {
+    // This is a security measure, while in development if I want
+    // to reset the questionnaire for testing that I am sure I want to reset
+    const devReset = confirm("Are you sure you want to reset: **QUESTIONNAIRE DATA**");
+
+    // if the user confirms then the finished survery cache will be removed
     localStorage.removeItem("surveyFinished");
+    // the application will reload
     location.reload();
 }
 
