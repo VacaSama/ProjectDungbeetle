@@ -37,8 +37,7 @@ body {
     right: 0;
     bottom: 0;
     z-index: 9999;
-    /* background-color: rgba(0, 0, 0, 0.6);  Dimmed background */
-    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.6);  /* Dimmed background */
     display: none;
     justify-content: center;
     align-items: center;

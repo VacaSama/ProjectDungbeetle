@@ -1,7 +1,7 @@
 ﻿@model ProjectDungbeetle.ViewModels.DashboardViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 <div>
 <h1 style="text-align:center; margin-top: -5px;">Welcome to Project Dungbeetle!</h1>
@@ -20,11 +20,37 @@
             {
                 @foreach (var q in Model.Questionnaire)
                 {
-                    <div class="question-block mb-3">
-                        <label>@q.QuestionText</label>
+                    <div class="question-block mb-4">
+                        <label class="fw-bold d-block mb-2">@q.QuestionText</label>
 
-                        <!-- This should connect to the proper questiontext type via the Question Id ##-->
-                        <input type="text" name="q-@q.Id" class="form-control" />
+                        @{
+                            // Split the string by commas.
+                            // .Trim() removes extra spaces
+                            var splitOptions = q.Options.Split(',').Select(s => s.Trim()).ToList();
+                        }
+
+                        @foreach (var opt in splitOptions)
+                        {
+                            <div class="form-check">
+                                @if (q.IsMultiple)
+                                {
+                                    <input class="form-check-input" type="checkbox"
+                                           name="q-@q.Id"
+                                           value="@opt"
+                                           id="opt-@q.Id-@opt">
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="radio"
+                                           name="q-@q.Id"
+                                           value="@opt"
+                                           id="opt-@q.Id-@opt">
+                                }
+                                <label class="form-check-label" for="opt-@q.Id-@opt">
+                                    @opt
+                                </label>
+                            </div>
+                        }
                     </div>
                 }
             }
