@@ -1,32 +1,52 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+﻿// This block handles the Hints
+document.addEventListener('DOMContentLoaded', function () {
 
-    // retrieves the hints from the home/index-- Scripts section
+    // HINT LOGIC
     const hints = window.dashboardHints || [];
+    const toastElement = document.getElementById('toastHint');
+    const hintBtn = document.getElementById('liveToastBtn');
+    const hintText = document.getElementById('hintText');
 
-    // declaring variables from home/index
-    const toast1 = document.getElementById('toastHint');
-    const hint_btn = document.getElementById('liveToastBtn');
-    const hint_txt = document.getElementById('hintText');
+    if (toastElement && hintBtn) {
+        const toast = new bootstrap.Toast(toastElement);
+        hintBtn.addEventListener('click', function () {
+            if (hints.length > 0) {
+                const randomHint = hints[Math.floor(Math.random() * hints.length)];
+                hintText.innerText = randomHint;
+                toast.show();
+            }
+        });
+    }
 
-    if (!toast1 || !hint_btn) return; // safety guard, if there is no toast or hint button 
-                                    // then don't do anything.
+    // This block handles the "Auto-Popup"
+    // QUESTIONNAIRE AUTO-POPUP
+    const qModal = document.getElementById("questionnaireModal");
+    const isDone = localStorage.getItem("surveyFinished");
 
-    const toast = new bootstrap.Toast(toast1); // retrieves the bootstrap needed for the toast
-
-    // on-click event listener
-    hint_btn.addEventListener('click', () => {
-        // if there are no hints (if the length of the list is 0), do nothing
-        if (hints.length === 0) return;
-
-        // randomizes the hints using Math
-        const randomHint = hints[Math.floor(Math.random() * hints.length)];
-        // inserts the random hint into the blank hintText id
-        hint_txt.innerText = randomHint;
-
-        // shows the toast
-        toast.show();
-    });
+    if (qModal && typeof window.mustShowSurvey !== 'undefined') {
+        if (window.mustShowSurvey === true && !isDone) {
+            qModal.style.display = "flex";
+        }
+    }
 });
+
+// BUTTON FUNCTIONS Skipping the Questionnaire, Saving User Response and Dev Reset (Outside the block so HTML can find them)
+function closeModal() {
+    var modal = document.getElementById("questionnaireModal");
+    if (modal) { modal.style.display = "none"; }
+}
+
+function saveProfile() {
+    localStorage.setItem("surveyFinished", "true");
+    var modal = document.getElementById("questionnaireModal");
+    if (modal) { modal.style.display = "none"; }
+}
+
+// Make a DEV Reset button to test the questionnaire, clears the local storage and reloads the page
+function resetQuest() {
+    localStorage.removeItem("surveyFinished");
+    location.reload();
+}
 
 /* *** Psedo-Region (Context of this file - Dashboard.js)
 From w3 Schools =>

@@ -3,16 +3,16 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
+<div>
 <h1 style="text-align:center; margin-top: -5px;">Welcome to Project Dungbeetle!</h1>
 <h2 style="text-align:center; margin-top: -5px;"> Your personal coding journal!</h2>
-
+</div>
 <!--MODAL FOR THE QUESTIONNAIRE - DO NOT REMOVE -->
 
 
-<div id="questionnaireModal" class="modal-overlay questionnaireModal" style="display: none;">
-    <div class="modal-content">
-        <h2>Hiya! Let's start with a few questions! &#128515</h2>
+<div id="questionnaireModal" class="questionnaireModal modal-overlay ">
+    <div class="questionnaire-content modal-content">
+        <h2 style="text-align:center">Let's start with a few questions! &#128515</h2>
         <hr />
 
         <form id="questionnaireForm">
@@ -28,7 +28,6 @@
                     </div>
                 }
             }
-
             <div class="modal-buttons">
                 <button type="button" onclick="closeModal()" class="btn btn-outline-warning btn-skip mb-3">Skip for now</button>
                 <button type="button" onclick="saveProfile()" class="btn btn-outline-success btn-save mb-3">Save & Finish</button>
@@ -53,14 +52,14 @@
 
 
 <!-- **** MODAL FOR ENTRY DO NOT REMOVE****-->
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#newEntryModal" data-bs-whatever="">New Entry</button>
 
 <div class="modal fade" id="newEntryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="newEntryMLabel">New Entry</h1>
+                <h1 class="modal-title fs-5" id="newEntryLabel">New Entry</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -142,9 +141,16 @@ else
 
 @section Scripts { 
     <script>
-        //
+        // Serializing the Hints for JS to use and access, DO NOT REMOVE
+        // RANDOMIZED HINTS
         window.dashboardHints = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
             Model.Hints?.Select(h => h.HintText)));
+    </script>
+
+    <script>
+    // QUESTIONNAIRE CHECK - if there are questions, show the modal, if not, skip it. DO NOT REMOVE'
+    // QUESTIONNAIRE JAVASCRIPT LOGIC FROM dashboard.js previously was located in the site.js file.
+        window.mustShowSurvey = @((Model.Questionnaire != null && Model.Questionnaire.Count > 0).ToString().ToLower());
     </script>
 
     <script src="~/js/dashboard.js"></script>
