@@ -132,6 +132,8 @@ features and use cases*
 
 ## Detailed Use Cases
 
+---
+
 ### UC1: < Create a New Entry >
 **Primary Actor:**  USER, DEV
 
@@ -165,6 +167,8 @@ The entry is not saved until the fields are completed.
 If the system cannot store the entry, an error message is displayed.
 The user is prompted to try again.
 
+---
+
 ### UC2: < Edit/Update Entry >
 **Primary Actor:**  USER
 
@@ -194,6 +198,8 @@ If the selected entry cannot be located, the system displays an error message.
 
 If validation fails, the system prompts the user to correct the data.
 
+---
+
 ### UC3: < Delete Entry >
 **Primary Actor:**  USER, DEV
 
@@ -218,6 +224,7 @@ Then permanently deletes the entry from the system and removes it from the dashb
 - A1: ...
 - A2: ...
 
+---
 
 ### UC4: < Search Past Entries >
 **Primary Actor:**  USER
@@ -251,6 +258,8 @@ a message indicating no results were found.
 If the search query is empty, the system ignores the search, refreshes and display all 
 entries in order of most recent to least recent.
 
+---
+
 ### UC5: < Update User Response >
 **Primary Actor:**  USER, DEV
 
@@ -276,64 +285,121 @@ to update their responses. Otherwise, the display will remain disabled.
 If the user cannot update responses, 
 the developer or administrator must assist with updating the stored data.
 
+---
+
 ### UC6: < Complete and Store Questionnaire Response >
-**Primary Actor:**  
+**Primary Actor:**  USER, DEV
 
-**Goal:**  
+**Goal:**  Complete the questionnaire, then, send and store the user's responses
+in the database and the User Profile. 
 
-**Preconditions:**  
+**Preconditions:**  The user is accessing the application for the first time
+or has not completed the questionnaire.
 
-**Success Outcome:**  
+**Success Outcome:**  The questionnaire responses are stored in the system
+and sent to display on the user's profile. 
 
 ** Main Flow **
-1. ...
-2. ...
+The system prompts the user with the questionnaire.
+
+The user answers each question.
+
+The user submits the questionnaire.
+
+The system validates the responses.
+
+The system stores the responses in the database or local storage.
 
 ** Alternate Flow **
-- A1: ...
-- A2: ...
+- A1: Incomplete Questionnaire
 
+If some of the questions are not answered, the system prompts the user to complete them before submission.
+
+- A2: Skip Questionnaire
+
+If the user chooses to skip the questionnaire, it temporarily disables the questionnaire
+modal until the user refreshes the page. 
+
+- A3: Developer Reset
+If the DEV, completes the questionnaire for testing purposes, they can reset
+the cache ot local storage to allow them to appear as a new user and complete
+the questionnaire again if changes have been made to it. 
+
+---
 
 ### UC7: < View All Hints >
-**Primary Actor:**  
-**Goal:**  
-**Preconditions:**  
-**Success Outcome:**  
+**Primary Actor:** USER, DEV
+
+**Goal:**  Allows the user to view all hints in the Hints Tab, 
+which is separate from the dashboard, and contains all hints that are available to the user.
+
+**Preconditions:**  There must be hints available in the system for the user to view. 
+
+**Success Outcome:**  The user can view all hints in the Hints Tab.
 
 ** Main Flow **
-1. ...
-2. ...
+1. The user navigates to the Hints tab.
+
+2. The system retrieves all stored hints.
+
+3. The system displays the list of hints to the user.
 
 ** Alternate Flow **
-- A1: ...
-- A2: ...
+- A1: No Hints Available
 
+If no hints exist, the system 
+displays a message indicating that no hints are currently available.
+
+---
 
 ### UC8: < Receive Randomized Hint >
-**Primary Actor:**  
-**Goal:**  
-**Preconditions:**  
-**Success Outcome:**  
+**Primary Actor:**  USER
+
+**Goal:**  Upon clicking the "Show Hint" button on the dashboard,
+the user receives a random hint from the system, which is displayed 
+in a pop-up or toast notification.
+
+**Preconditions:**  Hints must be available in the system
+for the user to receive a random hint.
+
+**Success Outcome:**  A toast pop-up will display a random hint to the user.
 
 ** Main Flow **
-1. ...
-2. ...
+1. The user clicks the Show Hint button.
+2. The system selects a random hint from the hint collection.
+3. The system displays the hint using a toast notification or popup.
 
 ** Alternate Flow **
-- A1: ...
-- A2: ...
+- A1: No Hints Available
 
+If no hints exist, the system displays
+a message indicating that hints cannot be displayed.
+
+---
 
 ### UC9: < Load Last Saved >
-**Primary Actor:**  
-**Goal:**  
-**Preconditions:**  
-**Success Outcome:**  
+**Primary Actor:**  USER
+
+**Goal:**  Load previously stored user data so
+the user can continue where they left off.
+
+**Preconditions:**  The user has previously stored data in local storage.
+
+**Success Outcome:**  The user's entries, settings, 
+and User Profile(basic user information and questionnaire response) are 
+oaded successfully.
 
 ** Main Flow **
-1. ...
-2. ...
+1. The user opens the application.
+2. The system checks for stored user data.
+3. The system retrieves the saved data.
+4. The system loads the dashboard with the user's entries. 
+5. The system loads the user's profile with their information and questionnaire responses.
 
 ** Alternate Flow **
-- A1: ...
-- A2: ...
+- A1: No Saved Data
+
+If no data exists, the system loads a default dashboard
+and prompts the user to create their first entry.
+
+---
