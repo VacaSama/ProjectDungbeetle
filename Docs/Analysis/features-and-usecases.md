@@ -134,9 +134,12 @@ features and use cases*
 
 ### UC1: < Create a New Entry >
 **Primary Actor:**  USER, DEV
+
 **Goal:**  Allow the user to create a new journal entry that will be stored 
 	and displayed on the user's dashboard.
+
 **Preconditions:**  The entry creation form/modal is available and active.
+
 **Success Outcome:**  
 - A new entry is successfully stored in the system.
 - The entry appears on the user's dashboard.
@@ -164,8 +167,11 @@ The user is prompted to try again.
 
 ### UC2: < Edit/Update Entry >
 **Primary Actor:**  USER
+
 **Goal:**  Allows the user to edit an existing entry 
+
 **Preconditions:**  An entry must already exist for the user to edit.
+
 **Success Outcome:**  The selected entry is updated and the changes are saved.
 
 ** Main Flow **
@@ -190,13 +196,23 @@ If validation fails, the system prompts the user to correct the data.
 
 ### UC3: < Delete Entry >
 **Primary Actor:**  USER, DEV
-**Goal:**  
+
+**Goal:**  Allows the user to delete an existing entry 
 **Preconditions:**  
-**Success Outcome:**  
+- An entry must already exist for the user to delete them.
+- The use must confirm the deletion action to prevent accidental deletions. 
+- 
+**Success Outcome:**  The user will receive a confirmation prompt upon confirming the deletion.
+Then permanently deletes the entry from the system and removes it from the dashboard.
 
 ** Main Flow **
-1. ...
-2. ...
+1. The user navigates to the dashboard.
+2. The user selects an entry.
+3. The user clicks the Delete button.
+4. The system prompts the user to confirm the deletion.
+5. The user confirms the action.
+6. The system removes the entry from storage.
+7. The dashboard refreshes and the entry is no longer visible.
 
 ** Alternate Flow **
 - A1: ...
@@ -204,39 +220,69 @@ If validation fails, the system prompts the user to correct the data.
 
 
 ### UC4: < Search Past Entries >
-**Primary Actor:**  
-**Goal:**  
+**Primary Actor:**  USER
+
+**Goal:**  Allows the user to search through their past entries using keywords (within notes or error description)
+or title names.
+
 **Preconditions:**  
-**Success Outcome:**  
+- Journal entries must exist for the user to search through.
+- All required entry fields (title, notes, code snippet, error description) must have value information in them
+in order for the search function to work effectively.
+
+**Success Outcome:**  The entry or entries most matching the search
+criteria will be displayed at the top of the entry list on the dashboard.
+Following, any others that match the search criteria, from: perfect match (if any) to least matching.
 
 ** Main Flow **
-1. ...
-2. ...
+1. The user enters a keyword or title in the search bar.
+2. The user submits the search query.
+3. The system scans stored entries.
+4. The system filters entries based on the search keyword.
+5. Matching entries are displayed on the dashboard.
 
 ** Alternate Flow **
-- A1: ...
-- A2: ...
+- A1: No Matching Results
 
+If no entries match the search query, the system displays 
+a message indicating no results were found.
+
+- A2: Empty Search Query
+If the search query is empty, the system ignores the search, refreshes and display all 
+entries in order of most recent to least recent.
 
 ### UC5: < Update User Response >
-**Primary Actor:**  
-**Goal:**  
-**Preconditions:**  
-**Success Outcome:**  
+**Primary Actor:**  USER, DEV
+
+**Goal:**  Allows the user to update their answers for the questionnaire, if there were
+any changes in goals, experience level, name or other. 
+
+**Preconditions:**  The user must first, complete the questionnaire in order
+to update their responses. Otherwise, the display will remain disabled. 
+
+**Success Outcome:**  The user sucessfully updates their questionnaire responses.
 
 ** Main Flow **
-1. ...
-2. ...
+1. The user navigates to the User Profile.
+2. The user selects the option to ""update"" responses to enable changes.
+3. The system displays the previous responses.
+4. The user modifies one or more answers.
+5. The user submits the updated responses, by clicking ""save changes"".
+6. The system validates and saves the updates
 
 ** Alternate Flow **
-- A1: ...
-- A2: ...
+- A1: Update Not Allowed
 
+If the user cannot update responses, 
+the developer or administrator must assist with updating the stored data.
 
 ### UC6: < Complete and Store Questionnaire Response >
 **Primary Actor:**  
+
 **Goal:**  
+
 **Preconditions:**  
+
 **Success Outcome:**  
 
 ** Main Flow **
