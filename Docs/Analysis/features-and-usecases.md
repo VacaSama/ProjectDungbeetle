@@ -115,7 +115,7 @@ so that they can pick up where they left off.
 | UC3: < Delete Entry > | F1, F2, F4 |
 | UC4: < Search Past Entries > | F1, F2, F4, F5 |
 | UC5: < Update User Response > | F2, F3, F4 |
-| UC6: < Complete and Store Questionnaire Response> | F1, F4 |
+| UC6: < Complete and Store Questionnaire Response > | F1, F4 |
 | UC7: < View All Hints > | F5, F6 |
 | UC8: < Receive randomized hint >| F2, F6 |
 | UC9: < Load Last Saved >| F4 |
@@ -129,3 +129,138 @@ so that they can pick up where they left off.
 features and use cases*
 
 ---
+
+## Detailed Use Cases
+
+### UC1: < Create a New Entry >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+### UC2: < Edit/Update Entry >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+
+### UC3: < Delete Entry >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+
+### UC4: < Search Past Entries >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+
+### UC5: < Update User Response >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+
+### UC6: < Complete and Store Questionnaire Response >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+
+### UC7: < View All Hints >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+
+### UC8: < Receive Randomized Hint >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
+
+
+### UC9: < Load Last Saved >
+**Primary Actor:**  
+**Goal:**  
+**Preconditions:**  
+**Success Outcome:**  
+
+** Main Flow **
+1. ...
+2. ...
+
+** Alternate Flow **
+- A1: ...
+- A2: ...
