@@ -169,6 +169,18 @@ The user is prompted to try again.
 
 ---
 
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L49
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L81
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: AddEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L49
+- Covers alternate/failure path: (If/Else Statement No direct "Method") https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L173
+
+---
+
 ### UC2: < Edit/Update Entry >
 **Primary Actor:**  USER
 
@@ -200,6 +212,18 @@ If validation fails, the system prompts the user to correct the data.
 
 ---
 
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L78
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L159
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: UpdateEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L78
+- Covers alternate/failure path: UpdateEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L86
+
+---
+
 ### UC3: < Delete Entry >
 **Primary Actor:**  USER, DEV
 
@@ -223,6 +247,18 @@ Then permanently deletes the entry from the system and removes it from the dashb
 ** Alternate Flow **
 - A1: ...
 - A2: ...
+
+---
+
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L111
+- Key collaborators (if applicable):https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L161
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: DeleteEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L111
+- Covers alternate/failure path: DeleteEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L115
 
 ---
 
@@ -260,6 +296,18 @@ entries in order of most recent to least recent.
 
 ---
 
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L137
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Shared/_Layout.cshtml#L46
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: SortSearch() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L137
+- Covers alternate/failure path: SortSearch() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L160
+
+---
+
 ### UC5: < Update User Response >
 **Primary Actor:**  USER, DEV
 
@@ -284,6 +332,19 @@ to update their responses. Otherwise, the display will remain disabled.
 
 If the user cannot update responses, 
 the developer or administrator must assist with updating the stored data.
+
+---
+
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/UserProfileController.cs
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: (If/Else Statement No direct "Method", JS ID used) https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L44
+									  https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L37
+                                      https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml#L74
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
 
 ---
 
@@ -327,11 +388,26 @@ the questionnaire again if changes have been made to it.
 
 ---
 
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/UserProfileController.cs#L40
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L13
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml#L55
+									 
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: saveProfile() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L66
+- Covers alternate/failure path: closeModal() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L61
+	                             resetQuest() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L73
+
+---
+
 ### UC7: < View All Hints >
 **Primary Actor:** USER, DEV
 
 **Goal:**  Allows the user to view all hints in the Hints Tab, 
-which is separate from the dashboard, and contains all hints that are available to the user.
+which is on the dashboard connected to the general notes, 
+and contains all hints that are available to the user.
 
 **Preconditions:**  There must be hints available in the system for the user to view. 
 
@@ -349,6 +425,17 @@ which is separate from the dashboard, and contains all hints that are available 
 
 If no hints exist, the system 
 displays a message indicating that no hints are currently available.
+
+---
+
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L181
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: Index() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+- Covers alternate/failure path: (If/Else Statement No direct "Method") https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L216
 
 ---
 
@@ -377,6 +464,19 @@ a message indicating that hints cannot be displayed.
 
 ---
 
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L69
+                                     https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L7
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: Index() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+                               https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L15
+- Covers alternate/failure path: (No direct "Method"))
+
+---
+
 ### UC9: < Load Last Saved >
 **Primary Actor:**  USER
 
@@ -401,5 +501,17 @@ oaded successfully.
 
 If no data exists, the system loads a default dashboard
 and prompts the user to create their first entry.
+
+---
+
+** Implementation Evidence **
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml
+
+** Unit Test Evidence **
+- Test file: n/a, no tests were written before this branch was made
+- Covers success path: DungbeetleDbContext() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Data/DungbeetleDbContext.cs#L6
+									Initialize() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Data/SeedData.cs#L15
+- Covers alternate/failure path: (No direct "Method"))
 
 ---
