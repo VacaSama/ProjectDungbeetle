@@ -52,7 +52,7 @@
             <!-- DROPDOWN CHECK BOXES FOR CODING LANGUAGES THE USER IS LEARNING-->
         </div>
 
-
+        <!--Questionnaire Response Answers-->
         @foreach (var q in Model.QuestionniareData)
         {
             <label>@q.QuestionText</label>
@@ -70,24 +70,6 @@
 
             <input type="text" class="form-control mb-3" value="@answer" disabled />
         }
-
-        <!--Questionnaire Response Answers-->
-
-        <label for="" class="col-form-label">Question Text</label>
-        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 1" aria-label="Disabled input example" disabled />
-
-        <label for="" class="col-form-label">Question Text</label>
-        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 2" aria-label="Disabled input example" disabled />
-
-        <label for="" class="col-form-label">Question Text</label>
-        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 3" aria-label="Disabled input example" disabled />
-
-        <label for="" class="col-form-label">Question Text</label>
-        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 4" aria-label="Disabled input example" disabled />
-
-        <label for="" class="col-form-label">Question Text</label>
-        <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 5" aria-label="Disabled input example" disabled />
-
         <div class="">
             <button type="button" class="btn btn-primary mb-4">Update Profile</button> <!--This button should enable the disabled fields and let the user update them-->
             <button type="button" class="btn btn-primary mb-4">Save Changes</button> <!--Change the button TYPE to SUBMIT-->
