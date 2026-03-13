@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="code-snippet" class="col-form-label">Error Description:</label>
+                        <label for="error-description" class="col-form-label">Error Description:</label>
                         <textarea class="form-control" asp-for="Entry.ErrorDescription" placeholder="Place Error Code/Error Type Here"></textarea>
                     </div>
 
@@ -161,7 +161,7 @@
                                     <form asp-action="DeleteEntry" method="post"
                                           onsubmit="return confirm('Are you sure you want to delete: @entry.Title');"
                                           style="display:inline;">
-                                        <input type="hidden" name="entryId" value="@entry.Id" />
+                                        <input type="hidden" name="id" value="@entry.Id" />
                                         <button type="submit" class="btn btn-danger btn-sm">Delete Entry</button>
                                     </form>
                                 </div>
