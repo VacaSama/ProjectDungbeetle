@@ -169,6 +169,17 @@ The user is prompted to try again.
 
 ---
 
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
+
+---
+
 ### UC2: < Edit/Update Entry >
 **Primary Actor:**  USER
 
@@ -200,6 +211,17 @@ If validation fails, the system prompts the user to correct the data.
 
 ---
 
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
+
+---
+
 ### UC3: < Delete Entry >
 **Primary Actor:**  USER, DEV
 
@@ -223,6 +245,17 @@ Then permanently deletes the entry from the system and removes it from the dashb
 ** Alternate Flow **
 - A1: ...
 - A2: ...
+
+---
+
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
 
 ---
 
@@ -260,6 +293,17 @@ entries in order of most recent to least recent.
 
 ---
 
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
+
+---
+
 ### UC5: < Update User Response >
 **Primary Actor:**  USER, DEV
 
@@ -284,6 +328,17 @@ to update their responses. Otherwise, the display will remain disabled.
 
 If the user cannot update responses, 
 the developer or administrator must assist with updating the stored data.
+
+---
+
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
 
 ---
 
@@ -327,6 +382,17 @@ the questionnaire again if changes have been made to it.
 
 ---
 
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
+
+---
+
 ### UC7: < View All Hints >
 **Primary Actor:** USER, DEV
 
@@ -349,6 +415,17 @@ which is separate from the dashboard, and contains all hints that are available 
 
 If no hints exist, the system 
 displays a message indicating that no hints are currently available.
+
+---
+
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
 
 ---
 
@@ -377,6 +454,17 @@ a message indicating that hints cannot be displayed.
 
 ---
 
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
+
+---
+
 ### UC9: < Load Last Saved >
 **Primary Actor:**  USER
 
@@ -401,5 +489,16 @@ oaded successfully.
 
 If no data exists, the system loads a default dashboard
 and prompts the user to create their first entry.
+
+---
+
+** Implementation Evidence **
+- Entry point: (permalink to class/method)
+- Key collaborators (if applicable): (permalink)
+
+** Unit Test Evidence **
+- Test file: (permalink)
+- Covers success path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: testMethodName (optional permalink to lines)
 
 ---
