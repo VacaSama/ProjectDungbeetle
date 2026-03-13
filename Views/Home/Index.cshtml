@@ -216,9 +216,16 @@
                 <!-- Hints Tab -->
                 <div class="tab-pane fade" id="hints" role="tabpanel">
                     <ul class="list-group">
+                        @if (Model.Hints != null && Model.Hints.Any())
+                        {
                         @foreach (var hint in Model.Hints)
                         {
                             <li class="list-group-item"> <b> Hint Category: @hint.HintCategory </b> <br /> @hint.HintText</li>
+                            }
+                        }
+                        else
+                        {
+                            <p> class="text-muted text-center">No hints found.</p>
                         }
                     </ul>
                 </div>
