@@ -170,9 +170,9 @@ The user is prompted to try again.
 ---
 
 ** Implementation Evidence **
-- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L49
 - Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
-									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L81
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -213,9 +213,9 @@ If validation fails, the system prompts the user to correct the data.
 ---
 
 ** Implementation Evidence **
-- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L78
 - Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
-									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L159
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -251,9 +251,9 @@ Then permanently deletes the entry from the system and removes it from the dashb
 ---
 
 ** Implementation Evidence **
-- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L111
 - Key collaborators (if applicable):https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
-									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L161
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -297,9 +297,9 @@ entries in order of most recent to least recent.
 ---
 
 ** Implementation Evidence **
-- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L137
 - Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
-									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Shared/_Layout.cshtml#L46
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -387,16 +387,16 @@ the questionnaire again if changes have been made to it.
 ---
 
 ** Implementation Evidence **
-- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
-- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/UserProfileController.cs
-									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
-									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/UserProfileController.cs#L40
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L13
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml#L55
 									 
-
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers success path: saveProfile() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L66
+- Covers alternate/failure path: closeModal() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L61
+	                             resetQuest() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L73
 
 ---
 
@@ -427,12 +427,12 @@ displays a message indicating that no hints are currently available.
 ---
 
 ** Implementation Evidence **
-- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
-- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L181
 
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
+- Covers success path: Index() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
 - Covers alternate/failure path: testMethodName (optional permalink to lines)
 
 ---
@@ -463,8 +463,9 @@ a message indicating that hints cannot be displayed.
 ---
 
 ** Implementation Evidence **
-- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
-- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L69
+                                     https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L7
 
 ** Unit Test Evidence **
 - Test file: (permalink)
