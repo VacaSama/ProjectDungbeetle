@@ -1,32 +1,85 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+﻿//  Make sure JS runs AFTER the HTML exists --> addEventListener w/
+// 'DOMContentLoaded makes sure of that
 
-    // retrieves the hints from the home/index-- Scripts section
+document.addEventListener('DOMContentLoaded', function () {
+    // This block handles the Hints
+    // HINT LOGIC
     const hints = window.dashboardHints || [];
+    const toastElement = document.getElementById('toastHint');
+    const hintBtn = document.getElementById('liveToastBtn');
+    const hintText = document.getElementById('hintText');
 
-    // declaring variables from home/index
-    const toast1 = document.getElementById('toastHint');
-    const hint_btn = document.getElementById('liveToastBtn');
-    const hint_txt = document.getElementById('hintText');
+    if (toastElement && hintBtn) {
+        const toast = new bootstrap.Toast(toastElement);
+        hintBtn.addEventListener('click', function () {
+            if (hints.length > 0) {
+                const randomHint = hints[Math.floor(Math.random() * hints.length)];
+                hintText.innerText = randomHint;
+                toast.show();
+            }
+        });
+    }
 
-    if (!toast1 || !hint_btn) return; // safety guard, if there is no toast or hint button 
-                                    // then don't do anything.
+    // This block handles the "Auto-Popup"
+    // QUESTIONNAIRE AUTO-POPUP
+    const qModal = document.getElementById("questionnaireModal");
+    const isDone = localStorage.getItem("surveyFinished");
 
-    const toast = new bootstrap.Toast(toast1); // retrieves the bootstrap needed for the toast
+    if (qModal && typeof window.mustShowSurvey !== 'undefined') {
+        if (window.mustShowSurvey === true && !isDone) {
+            qModal.style.display = "flex";
+        }
+    }
 
-    // on-click event listener
-    hint_btn.addEventListener('click', () => {
-        // if there are no hints (if the length of the list is 0), do nothing
-        if (hints.length === 0) return;
+    // USER PROFILE MATCHING
 
-        // randomizes the hints using Math
-        const randomHint = hints[Math.floor(Math.random() * hints.length)];
-        // inserts the random hint into the blank hintText id
-        hint_txt.innerText = randomHint;
-
-        // shows the toast
-        toast.show();
+    // Occupation dropdown
+    document.querySelectorAll('.occupation-option').forEach(item => {
+        item.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            document.getElementById('occupation-input').value = value;
+        });
     });
-});
+    // ENABLES THE READONLY-DISABLED ATTRIBUTES FROM INPUT ON CLICK
+    document.getElementById('enable-changes').addEventListener('click', function () {
+        document.querySelectorAll('.questionnaire-input').forEach(input => {
+            input.removeAttribute('readonly');
+        });
+    });
+
+
+    // Experience dropdown
+    document.querySelectorAll('.experience-option').forEach(item => {
+        item.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            document.getElementById('experience-input').value = value;
+        });
+    });
+}); 
+
+    // BUTTON FUNCTIONS Skipping the Questionnaire, Saving User Response and Dev Reset (Outside the block so HTML can find them)
+    function closeModal() {
+        var modal = document.getElementById("questionnaireModal");
+        if (modal) { modal.style.display = "none"; }
+    }
+
+    function saveProfile() {
+        localStorage.setItem("surveyFinished", "true");
+        var modal = document.getElementById("questionnaireModal");
+        if (modal) { modal.style.display = "none"; }
+    }   
+
+    // Make a DEV Reset button to test the questionnaire, clears the local storage and reloads the page
+    function resetQuest() {
+    // This is a security measure, while in development if I want
+    // to reset the questionnaire for testing that I am sure I want to reset
+        const devReset = confirm("Are you sure you want to reset: **QUESTIONNAIRE DATA**");
+
+    // if the user confirms then the finished survery cache will be removed
+        localStorage.removeItem("surveyFinished");
+    // the application will reload
+        location.reload();
+    }
 
 /* *** Psedo-Region (Context of this file - Dashboard.js)
 From w3 Schools =>

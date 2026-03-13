@@ -1,56 +1,91 @@
 ﻿@model ProjectDungbeetle.ViewModels.DashboardViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
-
-<h1 class="display-4">Welcome to Project Dungbeetle!</h1>
-<h2> Your personal coding bulletin!</h2>
-
+<div>
+<h1 style="text-align:center; margin-top: -5px;">Welcome to Project Dungbeetle!</h1>
+<h2 style="text-align:center; margin-top: -5px;"> Your personal coding journal!</h2>
+</div>
 <!--MODAL FOR THE QUESTIONNAIRE - DO NOT REMOVE -->
 
-@* 
-<div class="modal fade" id="questionnaireModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Questionnaire</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body"> *@
 
+<div id="questionnaireModal" class="questionnaireModal modal-overlay ">
+    <div class="questionnaire-content modal-content">
+        <h2 style="text-align:center">Let's start with a few questions! &#128515</h2>
+        <hr />
 
-                @* Loop through your questions *@
-                @* @foreach (var question in Model.Questionnaire)
+        <form id="questionnaireForm">
+            @if (Model.Questionnaire != null)
+            {
+                @foreach (var q in Model.Questionnaire)
                 {
-                    <p>@question.QuestionText</p>
-                    @foreach (var opt in question.Options)
-                    {
-                        // could the question have multiple answers, if yes = checkbox
-                        <input type="@(question.IsMultiple ? "checkbox" : "radio")"
-                               name="question_@question.Id"
-                               value="@opt.Id" /> @opt.Options <br/>
-                    }
+                    <div class="question-block mb-4">
+                        <label class="fw-bold d-block mb-2">@q.QuestionText</label>
+
+                        @{
+                            // Split the string by commas.
+                            // .Trim() removes extra spaces
+                            var splitOptions = q.Options.Split(',').Select(s => s.Trim()).ToList();
+                        }
+
+                        @foreach (var opt in splitOptions)
+                        {
+                            <div class="form-check">
+                                @if (q.IsMultiple)
+                                {
+                                    <input class="form-check-input" type="checkbox"
+                                           name="q-@q.Id"
+                                           value="@opt"
+                                           id="opt-@q.Id-@opt">
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="radio"
+                                           name="q-@q.Id"
+                                           value="@opt"
+                                           id="opt-@q.Id-@opt">
+                                }
+                                <label class="form-check-label" for="opt-@q.Id-@opt">
+                                    @opt
+                                </label>
+                            </div>
+                        }
+                    </div>
                 }
+            }
+            <div class="modal-buttons">
+                <button type="button" onclick="closeModal()" class="btn btn-outline-warning btn-skip mb-3">Skip for now</button>
+                <button type="button" onclick="saveProfile()" class="btn btn-outline-success btn-save mb-3">Save & Finish</button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Skip</button>
-                <button type="button" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
+        </form>
     </div>
-</div> *@
+</div>
+
+@* TOAST button for Randomized hint pop-ups, DO NOT REMOVE*@
+<button id="liveToastBtn" class="btn btn-primary mb-3">Show Hint</button>
+
+@*Here is the content and the position for the Toast, toast-body is left blank intentionally*@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastHint" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Hint</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div id="hintText" class="toast-body"> <!--Random Hints go here, see dashboard.js--> </div>
+    </div>
+</div>
 
 
 <!-- **** MODAL FOR ENTRY DO NOT REMOVE****-->
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="">New Entry</button>
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#newEntryModal" data-bs-whatever="">New Entry</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="newEntryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">New Entry</h1>
+                <h1 class="modal-title fs-5" id="newEntryLabel">New Entry</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -93,63 +128,119 @@
 </div>
  
 @* so long as the entry is not null and has a value *@
-@if(Model.Entries != null && Model.Entries.Any()) { 
-    // for each entry print it as a card, with this content
-    @foreach (var entry in Model.Entries){
+<div class="container mt-4">
+    <div class="row">
 
-        <div class="card border-light mb-3" style="max-width: 500px;">
-            <div class="row g-0">
+        <!-- Entries -->
+        <div class="col-md-7">
 
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">@entry.Title</h5>
-                        <p class="card-text">@entry.CodeSnippet</p>
-                        <p class="card card-text">@entry.Notes</p>
-                        <p class="card-text"><small class="text-body-secondary">Error Description: @entry.ErrorDescription</small></p>
+            @if (Model.Entries != null && Model.Entries.Any())
+            {
+                @foreach (var entry in Model.Entries)
+                {
+                    <div class="card border-light mb-3" style="max-width: 500px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <h5 class="card-title">@entry.Title</h5>
+                                    <p class="card-text">@entry.CodeSnippet</p>
+                                    <p class="card-text">@entry.Notes</p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">
+                                            Error Description: @entry.ErrorDescription
+                                        </small>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">
+                                            Last Updated: @entry.CreatedAt
+                                        </small>
+                                    </p>
 
-                        <p class="card-text"><small class="text-body-secondary">Last Updated: @entry.CreatedAt</small></p>
-                        
-                        
-                        <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>  <!-- edit button-->
+                                    <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>
 
-
-                        <form asp-action="DeleteEntry" method="post" onsubmit="return confirm('Are you sure you want to delete: @entry.Title');" style="display:inline;">
-                            <input type="hidden" name="entryId" value="@entry.Id" />
-                            <button type="submit" class="btn btn-danger btn-sm">Delete Entry</button>  <!--delete button-->
-                        </form>
+                                    <form asp-action="DeleteEntry" method="post"
+                                          onsubmit="return confirm('Are you sure you want to delete: @entry.Title');"
+                                          style="display:inline;">
+                                        <input type="hidden" name="entryId" value="@entry.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete Entry</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted text-center">No entries found.</p>
+            }
+
+        </div> 
+
+        <!--Notes + Hints Tabs -->
+        <div class="col-md-5">
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="notesHintsTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active"
+                            id="notes-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#notes"
+                            type="button"
+                            role="tab">
+                        General Notes
+                    </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link"
+                            id="hints-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#hints"
+                            type="button"
+                            role="tab">
+                        All Hints
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content p-3 border border-top-0" id="notesHintsContent">
+
+                <!-- Notes Tab -->
+                <div class="tab-pane fade show active" id="notes" role="tabpanel">
+                    <textarea class="form-control" rows="10" placeholder="Write your notes here..."></textarea>
+                </div>
+
+                <!-- Hints Tab -->
+                <div class="tab-pane fade" id="hints" role="tabpanel">
+                    <ul class="list-group">
+                        @foreach (var hint in Model.Hints)
+                        {
+                            <li class="list-group-item"> <b> Hint Category: @hint.HintCategory </b> <br /> @hint.HintText</li>
+                        }
+                    </ul>
                 </div>
             </div>
-        </div>
-    }
-}
-else
-{
-    <p class="text-muted text-center">No entries found.</p>
-}
-
-@* TOAST button for Randomized hint pop-ups, DO NOT REMOVE*@
-<button id="liveToastBtn" class="btn btn-primary">Show Hint</button>
-
-@*Here is the content and the position for the Toast, toast-body is left blank intentionally*@
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="toastHint" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Hint</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-        </div>
-        <div id="hintText" class="toast-body"> <!--Random Hints go here, see dashboard.js--> </div>
-    </div>
-</div>
-
+        </div> 
+    </div> 
+</div> 
 
 @*Serializing the Hints for JS to use and access, DO NOT REMOVE *@
 
 @section Scripts { 
     <script>
-        //
+        // Serializing the Hints for JS to use and access, DO NOT REMOVE
+        // RANDOMIZED HINTS
         window.dashboardHints = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
             Model.Hints?.Select(h => h.HintText)));
+    </script>
+
+    <script>
+    // QUESTIONNAIRE CHECK - if there are questions, show the modal, if not, skip it. DO NOT REMOVE'
+    // QUESTIONNAIRE JAVASCRIPT LOGIC FROM dashboard.js previously was located in the site.js file.
+        window.mustShowSurvey = @((Model.Questionnaire != null && Model.Questionnaire.Count > 0).ToString().ToLower());
     </script>
 
     <script src="~/js/dashboard.js"></script>

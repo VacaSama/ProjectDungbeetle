@@ -34,9 +34,9 @@ namespace ProjectDungbeetle.Controllers
                 // entry, and hints. 
                 Entries = _context.Entries.ToList(),
                 Hints = _context.Hints.ToList(),
+                Questionnaire = _context.Questionnaires.ToList(),
+                UserResponse = _context.QuestionnaireResponses.ToList(),
             };
-
-
             return View(vm);
         }
 

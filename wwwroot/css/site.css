@@ -29,3 +29,24 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.questionnaireModal .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.6);  /* Dimmed background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionnaire-content .modal-content {
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 1000px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}

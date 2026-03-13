@@ -1,4 +1,79 @@
-﻿namespace ProjectDungbeetle.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+
+namespace ProjectDungbeetle.Models;
+
+/// <summary>
+/// An enum that gives the user options to choose from with their
+/// UserExperience when changing their user profile.
+/// </summary>
+public enum UserOccupation
+{
+    Student,
+
+    [Display(Name = "Teacher/Instructor")]
+    Teacher,
+
+    [Display (Name = "Software Developer")]
+    Developer,
+
+    [Display(Name = "Computer Programmer")]
+    Programmer,
+
+    Other
+}
+
+/// <summary>
+/// An enum that gives the user options to choose from with their ExperienceLevel when changing their user profile.
+/// </summary>
+public enum ExperienceLevel
+{
+    [Display(Name = "Coding Newbie")]
+    Beginner,
+
+    [Display(Name = "Entry-Level Coder")]
+    Intermediate,
+
+    [Display(Name = "Advanced Coder")]
+    Advanced,
+
+    [Display(Name = "Expert Coder")]
+    Expert
+}
+
+/// <summary>
+/// An enum that gives the user options to choose from with their IntendedUse when changing their user profile.
+/// </summary>
+public enum IntendedUse
+{
+    Personal,
+    Professional,
+    Academic,
+    Hobbyist
+}
+
+/// <summary>
+/// An enum that gives the user options to choose from with their IntendedUse when changing their user profile.
+/// </summary>
+public enum LearningLanguages
+{
+    Java,
+    Ruby,
+
+    [Display(Name = "C#")]
+    CSharp,
+
+    [Display(Name = "C++")]
+    CPP,
+
+    C,
+    HTML,
+    CSS,
+    Python,
+    JavaScript,
+    SQL,
+    Other
+}
 
 /// <summary>
 /// The UserProfile class that represents a user's profile information.
@@ -13,30 +88,40 @@ public class UserProfile
     public int Id { get; set; }
 
     /// <summary>
+    /// Allows the user to input their name or a nickname that they prefer to be called. 
+    /// This is optional and can be left blank if the user prefers.
+    /// </summary>
+    public string? FullName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the user's occupation, which can be selected from a predefined list. 
+    /// Used with the UserOccupation enum to provide a dropdown selection for the user.
+    /// </summary>
+    public UserOccupation? Occupation { get; set; }
+
+    /// <summary>
     /// Gets or sets the experience level associated with the user,
     /// and their coding skills asociated with each selected one.
     /// 
-    /// Works on a scale of 1 to 5, where: 1 = Beginner, 2 = Novice, 
-    /// 3 = Intermediate, 4 = Advanced, 5 = Expert.
+    /// Works with the ExperienceLevel enum to provide a dropdown selection for the user. 
     /// </summary>
-    public required int ExperienceLevel { get; set; } = 1;
+    public ExperienceLevel? ExperienceLevel { get; set; }
 
     /// <summary>
     /// Asks the user what coding languages they are currently learning. 
     /// This is connected to CodingLanguage property in the Entry model.
     /// 
-    /// This is required to help tailor the user experience and understand 
-    /// their code issues better. I.e. User 1 has more Java entries, whereas, 
-    /// user 2 has a mix of Python and JavaScript entries.
+    /// 
+    /// A dropdown selection for the user to select from a predefined list of coding languages.
     /// </summary>
-    public required string LearningLanguages { get; set; }
+    public LearningLanguages LearningLanguages { get; set; }
 
     /// <summary>
     /// Asks the user what their goal is for using this application. 
     /// 
     /// Personal use, Professional Development, Academic, Hobby, etc.
     /// </summary>
-    public required string IntendedUse { get; set; }
+    public IntendedUse IntendedUse { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether cookies are enabled for the current session.

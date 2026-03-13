@@ -21,7 +21,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -32,15 +32,19 @@
                                 Sort by:
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Newest First</a></li>
-                                <li><a class="dropdown-item" href="#">Oldest First</a></li>
+                                <li><a class="dropdown-item" asp-action="SortSearch" asp-route-sort="newest">Newest First</a></li>
+                                <li><a class="dropdown-item" asp-action="SortSearch" asp-route-sort="oldest">Oldest First</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Default</a></li>
+                                <li><a class="dropdown-item" asp-action="SortSearch" asp-route-sort="default">Default</a></li>
                             </ul>
+                        </li>
+                        <!--USER PROFILE LINK-->
+                        <li class="nav-item" style="margin-left:auto">
+                            <a class="nav-link text-light" asp-area="" asp-controller="UserProfile" asp-action="Index"> User Profile</a>
                         </li>
                         <!--SEARCH BAR - NAV-->
                         <form asp-action="SortSearch" method="get" class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <input class="form-control me-2" type="search" placeholder="Search Entry" aria-label="Search" />
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </ul>
