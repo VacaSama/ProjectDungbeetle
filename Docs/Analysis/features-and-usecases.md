@@ -176,8 +176,8 @@ The user is prompted to try again.
 
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers success path: AddEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L49
+- Covers alternate/failure path: (If/Else Statement No direct "Method") https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L173
 
 ---
 
@@ -219,8 +219,8 @@ If validation fails, the system prompts the user to correct the data.
 
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers success path: UpdateEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L78
+- Covers alternate/failure path: UpdateEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L86
 
 ---
 
@@ -257,8 +257,8 @@ Then permanently deletes the entry from the system and removes it from the dashb
 
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers success path: DeleteEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L111
+- Covers alternate/failure path: DeleteEntry() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L115
 
 ---
 
@@ -303,8 +303,8 @@ entries in order of most recent to least recent.
 
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers success path: SortSearch() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L137
+- Covers alternate/failure path: SortSearch() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L160
 
 ---
 
@@ -341,7 +341,9 @@ the developer or administrator must assist with updating the stored data.
 
 ** Unit Test Evidence **
 - Test file: 
-- Covers success path: testMethodName (optional permalink to lines)
+- Covers success path: (If/Else Statement No direct "Method", JS ID used) https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L44
+									  https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L37
+                                      https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml#L74
 - Covers alternate/failure path: testMethodName (optional permalink to lines)
 
 ---
@@ -433,7 +435,7 @@ displays a message indicating that no hints are currently available.
 ** Unit Test Evidence **
 - Test file: (permalink)
 - Covers success path: Index() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers alternate/failure path: (If/Else Statement No direct "Method") https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml#L216
 
 ---
 
@@ -469,8 +471,9 @@ a message indicating that hints cannot be displayed.
 
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers success path: Index() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs#L27
+                               https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/wwwroot/js/dashboard.js#L15
+- Covers alternate/failure path: (No direct "Method"))
 
 ---
 
@@ -507,7 +510,8 @@ and prompts the user to create their first entry.
 
 ** Unit Test Evidence **
 - Test file: (permalink)
-- Covers success path: testMethodName (optional permalink to lines)
-- Covers alternate/failure path: testMethodName (optional permalink to lines)
+- Covers success path: DungbeetleDbContext() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Data/DungbeetleDbContext.cs#L6
+									Initialize() https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Data/SeedData.cs#L15
+- Covers alternate/failure path: (No direct "Method"))
 
 ---
