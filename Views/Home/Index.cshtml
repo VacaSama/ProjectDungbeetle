@@ -128,57 +128,104 @@
 </div>
  
 @* so long as the entry is not null and has a value *@
-@if(Model.Entries != null && Model.Entries.Any()) { 
-    // for each entry print it as a card, with this content
-    @foreach (var entry in Model.Entries){
+<div class="container mt-4">
+    <div class="row">
 
-        <div class="card border-light mb-3" style="max-width: 500px;">
-            <div class="row g-0">
+        <!-- Entries -->
+        <div class="col-md-7">
 
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">@entry.Title</h5>
-                        <p class="card-text">@entry.CodeSnippet</p>
-                        <p class="card card-text">@entry.Notes</p>
-                        <p class="card-text"><small class="text-body-secondary">Error Description: @entry.ErrorDescription</small></p>
+            @if (Model.Entries != null && Model.Entries.Any())
+            {
+                @foreach (var entry in Model.Entries)
+                {
+                    <div class="card border-light mb-3" style="max-width: 500px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <h5 class="card-title">@entry.Title</h5>
+                                    <p class="card-text">@entry.CodeSnippet</p>
+                                    <p class="card-text">@entry.Notes</p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">
+                                            Error Description: @entry.ErrorDescription
+                                        </small>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">
+                                            Last Updated: @entry.CreatedAt
+                                        </small>
+                                    </p>
 
-                        <p class="card-text"><small class="text-body-secondary">Last Updated: @entry.CreatedAt</small></p>
-                        
-                        
-                        <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>  <!-- edit button-->
+                                    <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>
 
-
-                        <form asp-action="DeleteEntry" method="post" onsubmit="return confirm('Are you sure you want to delete: @entry.Title');" style="display:inline;">
-                            <input type="hidden" name="entryId" value="@entry.Id" />
-                            <button type="submit" class="btn btn-danger btn-sm">Delete Entry</button>  <!--delete button-->
-                        </form>
+                                    <form asp-action="DeleteEntry" method="post"
+                                          onsubmit="return confirm('Are you sure you want to delete: @entry.Title');"
+                                          style="display:inline;">
+                                        <input type="hidden" name="entryId" value="@entry.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete Entry</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted text-center">No entries found.</p>
+            }
+
+        </div> 
+
+        <!--Notes + Hints Tabs -->
+        <div class="col-md-5">
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="notesHintsTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active"
+                            id="notes-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#notes"
+                            type="button"
+                            role="tab">
+                        General Notes
+                    </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link"
+                            id="hints-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#hints"
+                            type="button"
+                            role="tab">
+                        All Hints
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content p-3 border border-top-0" id="notesHintsContent">
+
+                <!-- Notes Tab -->
+                <div class="tab-pane fade show active" id="notes" role="tabpanel">
+                    <textarea class="form-control" rows="10" placeholder="Write your notes here..."></textarea>
+                </div>
+
+                <!-- Hints Tab -->
+                <div class="tab-pane fade" id="hints" role="tabpanel">
+                    <ul class="list-group">
+                        @foreach (var hint in Model.Hints)
+                        {
+                            <li class="list-group-item"> <b> Hint Category: @hint.HintCategory </b> <br /> @hint.HintText</li>
+                        }
+                    </ul>
                 </div>
             </div>
-        </div>
-    }
-}
-else
-{
-    <p class="text-muted text-center">No entries found.</p>
-}
-
-<!-- Tabs -->
-<ul class="nav nav-tabs" id="notesHintsTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button" role="tab">
-            Notes
-        </button>
-    </li>
-
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="hints-tab" data-bs-toggle="tab" data-bs-target="#hints" type="button" role="tab">
-            Hints
-        </button>
-    </li>
-</ul>
-
-
+        </div> 
+    </div> 
+</div> 
 
 @*Serializing the Hints for JS to use and access, DO NOT REMOVE *@
 
