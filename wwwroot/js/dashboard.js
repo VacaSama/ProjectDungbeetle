@@ -1,6 +1,8 @@
-﻿// This block handles the Hints
-document.addEventListener('DOMContentLoaded', function () {
+﻿//  Make sure JS runs AFTER the HTML exists --> addEventListener w/
+// 'DOMContentLoaded makes sure of that
 
+document.addEventListener('DOMContentLoaded', function () {
+    // This block handles the Hints
     // HINT LOGIC
     const hints = window.dashboardHints || [];
     const toastElement = document.getElementById('toastHint');
@@ -28,31 +30,56 @@ document.addEventListener('DOMContentLoaded', function () {
             qModal.style.display = "flex";
         }
     }
-});
 
-// BUTTON FUNCTIONS Skipping the Questionnaire, Saving User Response and Dev Reset (Outside the block so HTML can find them)
-function closeModal() {
-    var modal = document.getElementById("questionnaireModal");
-    if (modal) { modal.style.display = "none"; }
-}
+    // USER PROFILE MATCHING
 
-function saveProfile() {
-    localStorage.setItem("surveyFinished", "true");
-    var modal = document.getElementById("questionnaireModal");
-    if (modal) { modal.style.display = "none"; }
-}
+    // Occupation dropdown
+    document.querySelectorAll('.occupation-option').forEach(item => {
+        item.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            document.getElementById('occupation-input').value = value;
+        });
+    });
+    // ENABLES THE READONLY-DISABLED ATTRIBUTES FROM INPUT ON CLICK
+    document.getElementById('enable-changes').addEventListener('click', function () {
+        document.querySelectorAll('.questionnaire-input').forEach(input => {
+            input.removeAttribute('readonly');
+        });
+    });
 
-// Make a DEV Reset button to test the questionnaire, clears the local storage and reloads the page
-function resetQuest() {
+
+    // Experience dropdown
+    document.querySelectorAll('.experience-option').forEach(item => {
+        item.addEventListener('click', function () {
+            const value = this.getAttribute('data-value');
+            document.getElementById('experience-input').value = value;
+        });
+    });
+}); 
+
+    // BUTTON FUNCTIONS Skipping the Questionnaire, Saving User Response and Dev Reset (Outside the block so HTML can find them)
+    function closeModal() {
+        var modal = document.getElementById("questionnaireModal");
+        if (modal) { modal.style.display = "none"; }
+    }
+
+    function saveProfile() {
+        localStorage.setItem("surveyFinished", "true");
+        var modal = document.getElementById("questionnaireModal");
+        if (modal) { modal.style.display = "none"; }
+    }   
+
+    // Make a DEV Reset button to test the questionnaire, clears the local storage and reloads the page
+    function resetQuest() {
     // This is a security measure, while in development if I want
     // to reset the questionnaire for testing that I am sure I want to reset
-    const devReset = confirm("Are you sure you want to reset: **QUESTIONNAIRE DATA**");
+        const devReset = confirm("Are you sure you want to reset: **QUESTIONNAIRE DATA**");
 
     // if the user confirms then the finished survery cache will be removed
-    localStorage.removeItem("surveyFinished");
+        localStorage.removeItem("surveyFinished");
     // the application will reload
-    location.reload();
-}
+        location.reload();
+    }
 
 /* *** Psedo-Region (Context of this file - Dashboard.js)
 From w3 Schools =>

@@ -7,7 +7,7 @@
     ViewData["Title"] = "Profile";
 }
 
-<h1 class="text-center">The User Profile</h1>
+<h1 class="text-center">Peronalized User Profile</h1>
 
 <div class="container" style="display:flex; flex-direction:column; align-items:center; text-align:center">
     <!--IN THE FORM TAG add the method POST-->
@@ -15,39 +15,39 @@
         <div>
 
             <!--USERS PREFERRED NAME OR NICKNAME-->
-            <label for="" class="col-form-label">Placeholder User Name</label>
-            <input class="form-control mb-3" type="text" placeholder="Your Name" asp-for="FullName" aria-label="Disabled input example" disabled-readonly/>
+            <label for="" class="col-form-label">Your Name</label>
+            <input class="form-control mb-3 questionnaire-input" type="text" placeholder="Preferred Name or Nickname" value="@Model.FullName" readonly />
 
             <!--USER OCCUPATION DROPDOWN-->
-            <label for="" class="col-form-label"> Placeholder for Occupation</label>
+            <label for="" class="col-form-label"> Your Occupation</label>
             <div class="dropdown-center mb-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Select One
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">@UserOccupation.Student</a></li>
-                    <li><a class="dropdown-item" href="#">@UserOccupation.Teacher</a></li>
-                    <li><a class="dropdown-item" href="#">@UserOccupation.Developer</a></li>
-                    <li><a class="dropdown-item" href="#">@UserOccupation.Programmer</a></li>
-                    <li><a class="dropdown-item" href="#">@UserOccupation.Other</a></li>
+                    <li><a class="dropdown-item occupation-option" data-value="@UserOccupation.Student" href="#">@UserOccupation.Student</a></li>
+                    <li><a class="dropdown-item occupation-option" data-value="@UserOccupation.Teacher" href="#">@UserOccupation.Teacher</a></li>
+                    <li><a class="dropdown-item occupation-option" data-value="@UserOccupation.Developer" href="#">@UserOccupation.Developer</a></li>
+                    <li><a class="dropdown-item occupation-option" data-value="@UserOccupation.Programmer" href="#">@UserOccupation.Programmer</a></li>
+                    <li><a class="dropdown-item occupation-option" data-value="@UserOccupation.Other" href="#">@UserOccupation.Other</a></li>
                 </ul>
             </div>
-            <input class="form-control mb-3" style="" type="text" placeholder="Occupation" asp-for="Occupation" aria-label="Disabled input example" disabled-readonly />
+            <input id="occupation-input" class="form-control mb-3 questionnaire-input" style="" type="text" placeholder="Occupation" asp-for="Occupation" readonly />
 
             <!--USER EXPERIENCE LEVEL DROPDOWN-->
-            <label for="" class="col-form-label"> Placeholder for Experience Level </label>
+            <label for="" class="col-form-label"> Coding Experience Level </label>
             <div class="dropdown-center mb-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Select One
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Beginner</a></li>
-                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Intermediate</a></li>
-                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Advanced</a></li>
-                    <li><a class="dropdown-item" href="#">@ExperienceLevel.Expert</a></li>
+                    <li><a class="dropdown-item experience-option" data-value="@ExperienceLevel.Beginner" href="#">@ExperienceLevel.Beginner</a></li>
+                    <li><a class="dropdown-item experience-option" data-value="@ExperienceLevel.Intermediate" href="#">@ExperienceLevel.Intermediate</a></li>
+                    <li><a class="dropdown-item experience-option" data-value="@ExperienceLevel.Advanced" href="#">@ExperienceLevel.Advanced</a></li>
+                    <li><a class="dropdown-item experience-option" data-value="@ExperienceLevel.Expert" href="#">@ExperienceLevel.Expert</a></li>
                 </ul>
             </div>
-            <input class="form-control mb-3" style="" type="text" placeholder="Overall Coding Experience" asp-for="ExperienceLevel" aria-label="Disabled input example" disabled-readonly />
+            <input id="experience-input" class="form-control mb-3 questionnaire-input" style="" type="text" placeholder="Overall Coding Experience" asp-for="ExperienceLevel" readonly />
             
             <!-- DROPDOWN CHECK BOXES FOR CODING LANGUAGES THE USER IS LEARNING-->
         </div>
@@ -68,13 +68,17 @@
                 }
             }
 
-            <input type="text" class="form-control mb-3" value="@answer" disabled />
+            <input type="text" class="form-control mb-3 questionnaire-input" value="@answer" readonly />
         }
         <div class="">
-            <button type="button" class="btn btn-primary mb-4">Update Profile</button> <!--This button should enable the disabled fields and let the user update them-->
-            <button type="button" class="btn btn-primary mb-4">Save Changes</button> <!--Change the button TYPE to SUBMIT-->
+            <button type="button"  id="enable-changes" class="btn btn-primary mb-4">Update Profile</button> <!--This button should enable the disabled fields and let the user update them-->
+            <button type="button"  id="save-profile" class="btn btn-primary mb-4">Save Changes</button> <!--Change the button TYPE to SUBMIT-->
         </div>
     </form>
     <!--INSERT RESETQUEST() JS FUNCTION-->
     <button type="button" onclick="resetQuest()" class="btn btn-outline-danger btn-save mb-3">**DEV RESET**</button>
 </div>
+
+@section Scripts {
+    <script src="~/js/dashboard.js"></script>
+}
