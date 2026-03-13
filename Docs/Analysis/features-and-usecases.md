@@ -170,8 +170,9 @@ The user is prompted to try again.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -212,8 +213,9 @@ If validation fails, the system prompts the user to correct the data.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -249,8 +251,9 @@ Then permanently deletes the entry from the system and removes it from the dashb
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable):https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -294,8 +297,9 @@ entries in order of most recent to least recent.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Models/Entry.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -332,11 +336,11 @@ the developer or administrator must assist with updating the stored data.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/UserProfileController.cs
 - Key collaborators (if applicable): (permalink)
 
 ** Unit Test Evidence **
-- Test file: (permalink)
+- Test file: 
 - Covers success path: testMethodName (optional permalink to lines)
 - Covers alternate/failure path: testMethodName (optional permalink to lines)
 
@@ -383,8 +387,11 @@ the questionnaire again if changes have been made to it.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/UserProfileController.cs
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
+									 https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml
+									 
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -397,7 +404,8 @@ the questionnaire again if changes have been made to it.
 **Primary Actor:** USER, DEV
 
 **Goal:**  Allows the user to view all hints in the Hints Tab, 
-which is separate from the dashboard, and contains all hints that are available to the user.
+which is on the dashboard connected to the general notes, 
+and contains all hints that are available to the user.
 
 **Preconditions:**  There must be hints available in the system for the user to view. 
 
@@ -419,8 +427,8 @@ displays a message indicating that no hints are currently available.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -455,8 +463,8 @@ a message indicating that hints cannot be displayed.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/Home/Index.cshtml
 
 ** Unit Test Evidence **
 - Test file: (permalink)
@@ -493,8 +501,8 @@ and prompts the user to create their first entry.
 ---
 
 ** Implementation Evidence **
-- Entry point: (permalink to class/method)
-- Key collaborators (if applicable): (permalink)
+- Entry point: https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Controllers/HomeController.cs
+- Key collaborators (if applicable): https://github.com/VacaSama/ProjectDungbeetle/blob/a62bb80e9a927eb129dbe93454b69a236635435b/Views/UserProfile/Index.cshtml
 
 ** Unit Test Evidence **
 - Test file: (permalink)
