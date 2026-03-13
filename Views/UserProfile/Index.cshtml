@@ -53,8 +53,25 @@
         </div>
 
 
-        <!--Questionnaire Response Answers-->
+        @foreach (var q in Model.QuestionniareData)
+        {
+            <label>@q.QuestionText</label>
 
+            string answer = "";
+
+            foreach (var r in Model.UserResponseData)
+            {
+                if (r.QuestionId == q.Id)
+                {
+                    answer = r.UserResponse;
+                    break;
+                }
+            }
+
+            <input type="text" class="form-control mb-3" value="@answer" disabled />
+        }
+
+        <!--Questionnaire Response Answers-->
 
         <label for="" class="col-form-label">Question Text</label>
         <input class="form-control mb-3" style="" type="text" placeholder="Questionnaire Response 1" aria-label="Disabled input example" disabled />
