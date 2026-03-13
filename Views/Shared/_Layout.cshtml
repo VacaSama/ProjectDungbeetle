@@ -32,10 +32,10 @@
                                 Sort by:
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Newest First</a></li>
-                                <li><a class="dropdown-item" href="#">Oldest First</a></li>
+                                <li><a class="dropdown-item" asp-action="SortSearch" asp-route-sort="newest">Newest First</a></li>
+                                <li><a class="dropdown-item" asp-action="SortSearch" asp-route-sort="oldest">Oldest First</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Default</a></li>
+                                <li><a class="dropdown-item" asp-action="SortSearch" asp-route-sort="default">Default</a></li>
                             </ul>
                         </li>
                         <!--USER PROFILE LINK-->
