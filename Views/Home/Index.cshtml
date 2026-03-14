@@ -3,12 +3,14 @@
 @{
     ViewData["Title"] = "Dashboard";
 }
+<!-- HEADER INFORMATION -->
+
 <div>
 <h1 style="text-align:center; margin-top: -5px;">Welcome to Project Dungbeetle!</h1>
 <h2 style="text-align:center; margin-top: -5px;"> Your personal coding journal!</h2>
 </div>
-<!--MODAL FOR THE QUESTIONNAIRE - DO NOT REMOVE -->
 
+<!--MODAL FOR THE QUESTIONNAIRE - DO NOT REMOVE -->
 
 <div id="questionnaireModal" class="questionnaireModal modal-overlay ">
     <div class="questionnaire-content modal-content">
@@ -78,7 +80,13 @@
 
 
 <!-- **** MODAL FOR ENTRY DO NOT REMOVE****-->
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#newEntryModal" data-bs-whatever="">New Entry</button>
+<button type="button"
+        class="btn btn-primary mb-3"
+        data-bs-toggle="modal"
+        data-bs-target="#newEntryModal"
+        onclick="resetEntryModal()">
+    New Entry
+</button>
 
 <div class="modal fade" id="newEntryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -90,7 +98,8 @@
             </div>
 
             <!-- Single form wrapping both modal-body and modal-footer -->
-            <form asp-action="AddEntry" method="post">
+            <form id="entryForm" method="post">
+                <input type="hidden" asp-for="Entry.Id" id="entry-id" />
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="entry-title" class="col-form-label">*Entry Title:</label>
@@ -156,7 +165,13 @@
                                         </small>
                                     </p>
 
-                                    <button type="button" class="btn btn-secondary btn-sm">Edit Entry</button>
+                                    <button type="button"
+                                            class="btn btn-primary btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#newEntryModal"
+                                            onclick="loadEntryForEdit(@entry.Id)">
+                                            Edit Entry
+                                    </button>
 
                                     <form asp-action="DeleteEntry" method="post"
                                           onsubmit="return confirm('Are you sure you want to delete: @entry.Title');"
@@ -209,16 +224,16 @@
             <div class="tab-content p-3 border border-top-0" id="notesHintsContent">
 
                 <!-- Notes Tab -->
-                        <form asp-action="SaveGeneralNotes" method="post">
-                            <textarea name="content" class="form-control" rows="10">
-                            @Model.GeneralNotes?
-                            </textarea>
+                <div class="tab-pane fade show active" id="notes" role="tabpanel">
 
-                            <button type="submit" class="btn btn-primary mt-2">
-                                Save Notes
-                            </button>
-                        </form>
+                    <form asp-action="SaveGeneralNotes" method="post">
+                        <textarea name="content" placeholder="Write your notes here..." class="form-control" rows="10">
+                        @Model.GeneralNotes
+                        </textarea>
 
+                        <button type="submit" class="btn btn-primary mt-2">Save Notes</button>
+                    </form>
+                </div>
 
                 <!-- Hints Tab -->
                 <div class="tab-pane fade" id="hints" role="tabpanel">

@@ -57,6 +57,41 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 }); 
 
+function loadEntryForEdit(id) {
+    fetch(`/Home/GetEntry/${id}`)
+        .then(res => res.json())
+        .then(entry => {
+            // Fill the modal fields
+            document.getElementById("entry-id").value = entry.id;
+            document.getElementById("Entry_Title").value = entry.title;
+            document.getElementById("Entry_CodingLanguage").value = entry.codingLanguage;
+            document.getElementById("Entry_CodeSnippet").value = entry.codeSnippet;
+            document.getElementById("Entry_ErrorDescription").value = entry.errorDescription;
+            document.getElementById("Entry_Notes").value = entry.notes;
+
+            // Change modal title + button text
+            document.getElementById("newEntryLabel").innerText = "Edit Entry";
+            document.querySelector("#entryForm button[type='submit']").innerText = "Save Changes";
+
+            // Change form action to UpdateEntry
+            document.getElementById("entryForm").setAttribute("action", "/Home/UpdateEntry");
+        });
+}
+function resetEntryModal() {
+    document.getElementById("entry-id").value = "";
+    document.getElementById("Entry_Title").value = "";
+    document.getElementById("Entry_CodingLanguage").value = "";
+    document.getElementById("Entry_CodeSnippet").value = "";
+    document.getElementById("Entry_ErrorDescription").value = "";
+    document.getElementById("Entry_Notes").value = "";
+
+    document.getElementById("newEntryLabel").innerText = "New Entry";
+    document.querySelector("#entryForm button[type='submit']").innerText = "Add";
+
+    document.getElementById("entryForm").setAttribute("action", "/Home/AddEntry");
+}
+
+
     // BUTTON FUNCTIONS Skipping the Questionnaire, Saving User Response and Dev Reset (Outside the block so HTML can find them)
     function closeModal() {
         var modal = document.getElementById("questionnaireModal");

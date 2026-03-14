@@ -105,6 +105,17 @@ namespace ProjectDungbeetle.Controllers
         }
 
         /// <summary>
+        /// Retrieves the entry with the specified identifier and returns it as a JSON result.
+        /// </summary>
+        /// <param name="id">The unique identifier of the entry to retrieve.</param>
+        /// <returns>A JSON result containing the entry with the specified identifier, or null if no such entry exists.</returns>
+        public IActionResult GetEntry(int id)
+        {
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == id);
+            return Json(entry);
+        }
+
+        /// <summary>
         /// This method allows the user to DELETE a selected entry in their 
         /// Project Dungbeetle entry journal
         /// </summary>
