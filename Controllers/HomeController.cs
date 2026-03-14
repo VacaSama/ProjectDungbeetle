@@ -26,6 +26,8 @@ namespace ProjectDungbeetle.Controllers
 
         public IActionResult Index()
         {
+            var notes = _context.GeneralNotes.FirstOrDefault();
+
             // this creates a new viewmodel object for the dashboard view. 
             // with the information from the seeded database. _context.Entries, _context.Hints...
             var vm = new DashboardViewModel()
@@ -36,7 +38,7 @@ namespace ProjectDungbeetle.Controllers
                 Hints = _context.Hints.ToList(),
                 Questionnaire = _context.Questionnaires.ToList(),
                 UserResponse = _context.QuestionnaireResponses.ToList(),
-                GeneralNotes = _context.GeneralNotes.ToList()
+                GeneralNotes = notes?.NotesContent
             };
             return View(vm);
         }

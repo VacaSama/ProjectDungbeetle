@@ -209,9 +209,16 @@
             <div class="tab-content p-3 border border-top-0" id="notesHintsContent">
 
                 <!-- Notes Tab -->
-                <div class="tab-pane fade show active" id="notes" role="tabpanel">
-                    <textarea class="form-control" rows="10" placeholder="Write your notes here..."></textarea>
-                </div>
+                        <form asp-action="SaveGeneralNotes" method="post">
+                            <textarea name="content" class="form-control" rows="10">
+                            @Model.GeneralNotes?
+                            </textarea>
+
+                            <button type="submit" class="btn btn-primary mt-2">
+                                Save Notes
+                            </button>
+                        </form>
+
 
                 <!-- Hints Tab -->
                 <div class="tab-pane fade" id="hints" role="tabpanel">
@@ -225,7 +232,7 @@
                         }
                         else
                         {
-                            <p> class="text-muted text-center">No hints found.</p>
+                            <li class="text-muted text-center"> No hints found.</li>
                         }
                     </ul>
                 </div>

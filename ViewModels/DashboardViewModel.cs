@@ -26,9 +26,9 @@ public class DashboardViewModel
     public List<Entry>? Entries { get; set; } // existing entries in the database 
 
     /// <summary>
-    /// Retrieves general notes from the database to be displayed and saved on the dashboard
+    /// Retrieves one big field of general notes from the database to be displayed and saved on the dashboard
     /// </summary>
-    public List<GeneralNotes>? GeneralNotes { get; set; }
+    public string? GeneralNotes { get; set; }
 
     /// <summary>
     ///  Retrieves hints from the database to be displayed on the dashboard, 

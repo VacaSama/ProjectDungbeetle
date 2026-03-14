@@ -68,5 +68,9 @@ public class GeneralNotes
     [Key]
     public int Id { get; set; }
 
+    /// <summary>
+    /// Sets the content of the general notes, in the 
+    /// general notes tab on the dashboard. 
+    /// </summary>
     public string? NotesContent { get; set; }
 }
