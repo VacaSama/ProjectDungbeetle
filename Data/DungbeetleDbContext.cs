@@ -18,6 +18,13 @@ public class DungbeetleDbContext : DbContext
     public DbSet<Entry> Entries { get; set; }
 
     /// <summary>
+    /// Retrieves or sets the collection of GeneralNote objects in the database.
+    /// For the, general notes tab on the Dashboard. 
+    /// </summary>
+    public DbSet<GeneralNotes> GeneralNotes { get; set; }
+
+
+    /// <summary>
     /// Retrieves or sets the collection of Hints objects in the database.
     /// </summary>
     public DbSet<Hints> Hints { get; set; }

@@ -36,6 +36,7 @@ namespace ProjectDungbeetle.Controllers
                 Hints = _context.Hints.ToList(),
                 Questionnaire = _context.Questionnaires.ToList(),
                 UserResponse = _context.QuestionnaireResponses.ToList(),
+                GeneralNotes = _context.GeneralNotes.ToList()
             };
             return View(vm);
         }
@@ -77,10 +78,9 @@ namespace ProjectDungbeetle.Controllers
         [HttpPost] // create and post entry to the database
         public IActionResult UpdateEntry(DashboardViewModel vm)
         {
-            if (ModelState.IsValid){
+            if (!ModelState.IsValid){
                 return View("Index", vm);
             }
-            
 
             var entry = _context.Entries.FirstOrDefault(e => e.Id == vm.Entry.Id);
             if (entry == null)
@@ -168,6 +168,29 @@ namespace ProjectDungbeetle.Controllers
             };
 
             return View("Index", vm);
+        }
+
+        /// <summary>
+        /// This method contains logic for the user to save general notes on the dashboard, 
+        /// these are free form notes that the user can use to jot down any thoughts, ideas, or reminders they want to keep track of. 
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult SaveGeneralNotes(string content)
+        {
+            var note = _context.GeneralNotes.FirstOrDefault();
+
+            if (note == null)
+            {
+                note = new GeneralNotes { NotesContent = content };
+                _context.GeneralNotes.Add(note);
+            }
+            else
+            {
+                note.NotesContent = content;
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
