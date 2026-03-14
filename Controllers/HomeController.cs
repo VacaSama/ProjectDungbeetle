@@ -110,8 +110,8 @@ namespace ProjectDungbeetle.Controllers
         [HttpPost] // create and post entry to the database
         public IActionResult DeleteEntry(int id)
         {
-            // ERROR LINE 114 !!!
-            var entry = _context.Entries.FirstOrDefault(e => e.Id == e.Id); // SEE GITHUB ISSUE. ERROR HERE!!!
+            
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == id); 
             if (entry == null)
             {
                 throw new Exception("Could not delete entry, deletion error");
