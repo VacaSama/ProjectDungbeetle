@@ -201,6 +201,47 @@ namespace ProjectDungbeetle.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        /// 
+        [HttpPost]
+        public IActionResult SaveQuestionnaire(IFormCollection form)
+        {
+            var profile = _context.UserProfiles.FirstOrDefault();
+
+            foreach (var key in form.Keys)
+            {
+                if (!key.StartsWith("q-"))
+                    continue;
+
+                int questionId = int.Parse(key.Replace("q-", ""));
+                string answer = form[key];
+
+                var existing = _context.QuestionnaireResponses
+                    .FirstOrDefault(r => r.QuestionId == questionId && r.UserProfileId == profile.Id);
+
+                if (existing == null)
+                {
+                    _context.QuestionnaireResponses.Add(new QuestionnaireResponse
+                    {
+                        QuestionId = questionId,
+                        UserProfileId = profile.Id,
+                        UserResponse = answer
+                    });
+                }
+                else
+                {
+                    existing.UserResponse = answer;
+                }
+            }
+
+            _context.SaveChanges();
+            return Ok();
+        }
+
         public IActionResult Privacy()
         {
             return View();
