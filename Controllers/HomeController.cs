@@ -51,11 +51,6 @@ namespace ProjectDungbeetle.Controllers
         [HttpPost] // create and post entry to the database
         public IActionResult AddEntry(DashboardViewModel vm)
         {
-            if(!ModelState.IsValid)
-            {
-                return View("Index", vm);
-            }
-
             var entry = new Entry
             {
                 Title = vm.Entry.Title,
