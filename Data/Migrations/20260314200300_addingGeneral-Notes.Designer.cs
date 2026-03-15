@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectDungbeetle.Data;
 
@@ -11,9 +12,11 @@ using ProjectDungbeetle.Data;
 namespace ProjectDungbeetle.Migrations
 {
     [DbContext(typeof(DungbeetleDbContext))]
-    partial class DungbeetleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260314200300_addingGeneral-Notes")]
+    partial class addingGeneralNotes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,6 +151,9 @@ namespace ProjectDungbeetle.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("CookiesEnabled")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ExperienceLevel")
                         .HasColumnType("int");

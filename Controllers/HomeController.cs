@@ -26,6 +26,8 @@ namespace ProjectDungbeetle.Controllers
 
         public IActionResult Index()
         {
+            var notes = _context.GeneralNotes.FirstOrDefault();
+
             // this creates a new viewmodel object for the dashboard view. 
             // with the information from the seeded database. _context.Entries, _context.Hints...
             var vm = new DashboardViewModel()
@@ -36,6 +38,7 @@ namespace ProjectDungbeetle.Controllers
                 Hints = _context.Hints.ToList(),
                 Questionnaire = _context.Questionnaires.ToList(),
                 UserResponse = _context.QuestionnaireResponses.ToList(),
+                GeneralNotes = notes?.NotesContent
             };
             return View(vm);
         }
@@ -48,11 +51,6 @@ namespace ProjectDungbeetle.Controllers
         [HttpPost] // create and post entry to the database
         public IActionResult AddEntry(DashboardViewModel vm)
         {
-            if(!ModelState.IsValid)
-            {
-                return View("Index", vm);
-            }
-
             var entry = new Entry
             {
                 Title = vm.Entry.Title,
@@ -77,10 +75,9 @@ namespace ProjectDungbeetle.Controllers
         [HttpPost] // create and post entry to the database
         public IActionResult UpdateEntry(DashboardViewModel vm)
         {
-            if (ModelState.IsValid){
+            if (!ModelState.IsValid){
                 return View("Index", vm);
             }
-            
 
             var entry = _context.Entries.FirstOrDefault(e => e.Id == vm.Entry.Id);
             if (entry == null)
@@ -103,6 +100,17 @@ namespace ProjectDungbeetle.Controllers
         }
 
         /// <summary>
+        /// Retrieves the entry with the specified identifier and returns it as a JSON result.
+        /// </summary>
+        /// <param name="id">The unique identifier of the entry to retrieve.</param>
+        /// <returns>A JSON result containing the entry with the specified identifier, or null if no such entry exists.</returns>
+        public IActionResult GetEntry(int id)
+        {
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == id);
+            return Json(entry);
+        }
+
+        /// <summary>
         /// This method allows the user to DELETE a selected entry in their 
         /// Project Dungbeetle entry journal
         /// </summary>
@@ -110,8 +118,8 @@ namespace ProjectDungbeetle.Controllers
         [HttpPost] // create and post entry to the database
         public IActionResult DeleteEntry(int id)
         {
-            // ERROR LINE 114 !!!
-            var entry = _context.Entries.FirstOrDefault(e => e.Id == e.Id); // SEE GITHUB ISSUE. ERROR HERE!!!
+            
+            var entry = _context.Entries.FirstOrDefault(e => e.Id == id); 
             if (entry == null)
             {
                 throw new Exception("Could not delete entry, deletion error");
@@ -168,6 +176,29 @@ namespace ProjectDungbeetle.Controllers
             };
 
             return View("Index", vm);
+        }
+
+        /// <summary>
+        /// This method contains logic for the user to save general notes on the dashboard, 
+        /// these are free form notes that the user can use to jot down any thoughts, ideas, or reminders they want to keep track of. 
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult SaveGeneralNotes(string content)
+        {
+            var note = _context.GeneralNotes.FirstOrDefault();
+
+            if (note == null)
+            {
+                note = new GeneralNotes { NotesContent = content };
+                _context.GeneralNotes.Add(note);
+            }
+            else
+            {
+                note.NotesContent = content;
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

@@ -55,3 +55,22 @@ public class Entry
     public required DateTime CreatedAt { get; set; } = DateTime.Now;
 
 }
+
+/// <summary>
+/// Represents a container for general notes or comments.
+/// </summary>
+public class GeneralNotes
+{
+    /// <summary>
+    /// Sets the unique identifier for the general notes section,
+    /// this is used to link the general notes to the user.
+    /// </summary>
+    [Key]
+    public int Id { get; set; }
+
+    /// <summary>
+    /// Sets the content of the general notes, in the 
+    /// general notes tab on the dashboard. 
+    /// </summary>
+    public string? NotesContent { get; set; }
+}
