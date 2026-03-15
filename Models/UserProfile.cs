@@ -123,12 +123,4 @@ public class UserProfile
     /// </summary>
     public IntendedUse IntendedUse { get; set; }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether cookies are enabled for the current session.
-    /// Cookies are enabled by default to trigger the questionnaire only once, 
-    /// for new users. Returning users will not see the questionnaire again, but can 
-    /// update their response. 
-    /// </summary>
-    public bool CookiesEnabled { get; set; } = true;
-
 }
