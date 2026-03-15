@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../ProjectDungbeetle.Tests/ProjectDungbeetle.Tests.csproj" Id="933b2902-c4ca-4082-9b38-8bc13c8fb37c" />
   <Project Path="ProjectDungbeetle.csproj" />
 </Solution>
