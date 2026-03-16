@@ -52,28 +52,6 @@ public enum IntendedUse
     Hobbyist
 }
 
-/// <summary>
-/// An enum that gives the user options to choose from with their IntendedUse when changing their user profile.
-/// </summary>
-public enum LearningLanguages
-{
-    Java,
-    Ruby,
-
-    [Display(Name = "C#")]
-    CSharp,
-
-    [Display(Name = "C++")]
-    CPP,
-
-    C,
-    HTML,
-    CSS,
-    Python,
-    JavaScript,
-    SQL,
-    Other
-}
 
 /// <summary>
 /// The UserProfile class that represents a user's profile information.
@@ -106,21 +84,5 @@ public class UserProfile
     /// Works with the ExperienceLevel enum to provide a dropdown selection for the user. 
     /// </summary>
     public ExperienceLevel? ExperienceLevel { get; set; }
-
-    /// <summary>
-    /// Asks the user what coding languages they are currently learning. 
-    /// This is connected to CodingLanguage property in the Entry model.
-    /// 
-    /// 
-    /// A dropdown selection for the user to select from a predefined list of coding languages.
-    /// </summary>
-    public LearningLanguages LearningLanguages { get; set; }
-
-    /// <summary>
-    /// Asks the user what their goal is for using this application. 
-    /// 
-    /// Personal use, Professional Development, Academic, Hobby, etc.
-    /// </summary>
-    public IntendedUse IntendedUse { get; set; }
 
 }

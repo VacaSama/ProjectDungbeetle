@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="../ProjectDungbeetle.Tests/ProjectDungbeetle.Tests.csproj">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
   <Project Path="ProjectDungbeetle.csproj" />
 </Solution>
