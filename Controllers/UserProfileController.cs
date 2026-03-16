@@ -53,7 +53,7 @@ public class UserProfileController : Controller
     }
 
     /// <summary>
-    /// 
+    /// POSTS a saved Profile and keeps all updates locked in 
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
