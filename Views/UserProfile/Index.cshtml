@@ -1,4 +1,5 @@
-﻿@model ProjectDungbeetle.ViewModels.UserProfileViewModel
+﻿@using System.ComponentModel.DataAnnotations
+@model ProjectDungbeetle.ViewModels.UserProfileViewModel
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,15 +12,15 @@
 
 <div class="container" style="display:flex; flex-direction:column; align-items:center; text-align:center">
     <!--IN THE FORM TAG add the method POST-->
-    <form>  
+    <form asp-action="SaveProfile" method="post">
         <div>
 
             <!--USERS PREFERRED NAME OR NICKNAME-->
-            <label for="" class="col-form-label">Your Name</label>
-            <input class="form-control mb-3 questionnaire-input" type="text" placeholder="Preferred Name or Nickname" value="@Model.FullName" readonly />
+            <label for="" class="col-form-label mb-3">Your Name</label>
+            <input asp-for="FullName" class="form-control questionnaire-input" readonly />
 
             <!--USER OCCUPATION DROPDOWN-->
-            <label for="" class="col-form-label"> Your Occupation</label>
+            <label for="" class="col-form-label mb-3"> Your Occupation</label>
             <div class="dropdown-center mb-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Select One
@@ -32,13 +33,14 @@
                     <li><a class="dropdown-item occupation-option" data-value="@UserOccupation.Other" href="#">@UserOccupation.Other</a></li>
                 </ul>
             </div>
-            <input id="occupation-input" class="form-control mb-3 questionnaire-input" style="" type="text" placeholder="Occupation" asp-for="Occupation" readonly />
+            <input class="form-control mb-3 questionnaire-input" id="occupation-input" asp-for="Occupation" readonly />
 
             <!--USER EXPERIENCE LEVEL DROPDOWN-->
-            <label for="" class="col-form-label"> Coding Experience Level </label>
+            
+            <label for="" class="col-form-label mb-3"> Coding Experience Level </label>
             <div class="dropdown-center mb-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Select One
+                Select One
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item experience-option" data-value="@ExperienceLevel.Beginner" href="#">@ExperienceLevel.Beginner</a></li>
@@ -47,9 +49,8 @@
                     <li><a class="dropdown-item experience-option" data-value="@ExperienceLevel.Expert" href="#">@ExperienceLevel.Expert</a></li>
                 </ul>
             </div>
-            <input id="experience-input" class="form-control mb-3 questionnaire-input" style="" type="text" placeholder="Overall Coding Experience" asp-for="ExperienceLevel" readonly />
-            
-            <!-- DROPDOWN CHECK BOXES FOR CODING LANGUAGES THE USER IS LEARNING-->
+            <input class="form-control mb-4 questionnaire-input" id="experience-input" asp-for="ExperienceLevel" readonly />
+
         </div>
 
         <!--Questionnaire Response Answers-->
@@ -72,7 +73,7 @@
         }
         <div class="">
             <button type="button"  id="enable-changes" class="btn btn-primary mb-4">Update Profile</button> <!--This button should enable the disabled fields and let the user update them-->
-            <button type="button"  id="save-profile" class="btn btn-primary mb-4">Save Changes</button> <!--Change the button TYPE to SUBMIT-->
+            <button type="submit"  id="save-profile" class="btn btn-primary mb-4">Save Changes</button> <!--Change the button TYPE to SUBMIT-->
         </div>
     </form>
     <!--INSERT RESETQUEST() JS FUNCTION-->
