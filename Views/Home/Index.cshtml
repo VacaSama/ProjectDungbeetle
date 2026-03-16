@@ -17,7 +17,7 @@
         <h2 style="text-align:center">Let's start with a few questions! &#128515</h2>
         <hr />
 
-        <form id="questionnaireForm">
+        <form id="questionnaireForm" method="post" asp-action="SaveQuestionnaire">
             @if (Model.Questionnaire != null)
             {
                 @foreach (var q in Model.Questionnaire)
@@ -58,7 +58,7 @@
             }
             <div class="modal-buttons">
                 <button type="button" onclick="closeModal()" class="btn btn-outline-warning btn-skip mb-3">Skip for now</button>
-                <button type="button" onclick="saveProfile()" class="btn btn-outline-success btn-save mb-3">Save & Finish</button>
+                <button type="submit" class="btn btn-outline-success btn-save mb-3">Save & Finish</button>
             </div>
         </form>
     </div>
@@ -85,7 +85,7 @@
         data-bs-toggle="modal"
         data-bs-target="#newEntryModal"
         onclick="resetEntryModal()">
-    New Entry
+        New Entry
 </button>
 
 <div class="modal fade" id="newEntryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
